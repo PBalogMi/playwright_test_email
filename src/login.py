@@ -8,3 +8,5 @@ class Login:
         self.page.get_by_role("button", name="Next").click()
         self.page.get_by_label("Enter your password").fill(credentials["password"])
         self.page.get_by_role("button", name="Next").click()
+        # After the login, it takes some time to load the page
+        self.page.wait_for_timeout(5000)

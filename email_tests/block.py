@@ -42,15 +42,18 @@ def attach_file(main_page):
     call_send_email.add_attachment()
 
 
-@then('prepare email')
+@then('send email with attached file named as funny_picture.png')
 def prepare_email(credentials, main_page):
-    call_prepare_email = SendEmail(main_page)
-    call_prepare_email.prepare_email(credentials)
+    call_prepare_email = SendEmail(main_page, credentials)
+    call_prepare_email.prepare_email()
+    call_prepare_email.add_attachment()
+    call_prepare_email.send_email()
 
 
 @then('send email')
-def send_email(main_page):
-    call_send_email = SendEmail(main_page)
+def send_email(credentials, main_page):
+    call_send_email = SendEmail(main_page, credentials)
+    call_send_email.prepare_email()
     call_send_email.send_email()
 
 
