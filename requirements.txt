@@ -1,0 +1,4 @@
+playwright==1.39.0
+pytest-playwright=0.4.3
+pytest==7.4.3
+pytest-bdd==7.0.0
