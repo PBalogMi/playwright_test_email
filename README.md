@@ -23,7 +23,6 @@ Before running the case study, ensure you have the following tools installed:
 
 4. Set up your PyCharm environment for pytest testing as shown in the provided image.
 
-![ Picture not visible right now.](/playwright_test_email/files/pycharm_setup/pycharm_pytest_setup.png)
 ![PyCharm Configuration](/files/pycharm_setup/pycharm_pytest_setup.png)
 
 5. Run the tests using PyCharm or from the command line with the command pytest.
