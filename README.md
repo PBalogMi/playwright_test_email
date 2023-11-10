@@ -1,4 +1,4 @@
-# From Pytest to Python BDD thanks to Playwright and Gherkin
+# From Python to Pytest BDD thanks to Playwright and Gherkin
 
 ## Description
 
