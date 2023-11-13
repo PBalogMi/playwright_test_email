@@ -27,6 +27,7 @@ Before running the case study, ensure you have the following tools installed:
 4. In the block.feature file, insert into the Examples tables your Gmail credentials (eamil, password, account_name) and
    account information (name_from_contacts, email_address_from_contacts) from contacts list where should be send 
    test email.
+   
    **Note: The optimal choice is to include your personal email account in the contacts and enter it into the Examples 
    tables to avoid sending unsolicited emails to someone else's account.**
 
