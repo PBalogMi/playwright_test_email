@@ -2,7 +2,8 @@
 
 ## Description
 
-This project serves as a case study on how to implement Behavior Driven Development (BDD) testing for a Gmail account using Python, Gherkin, pytest_bdd, and Playwright.
+This project serves as a case study on how to implement Behavior Driven Development (BDD) testing for a Gmail account 
+using Python, Gherkin, pytest_bdd, and Playwright.
 
 ## Prerequisites
 
@@ -19,11 +20,15 @@ Before running the case study, ensure you have the following tools installed:
 
 ![Gmail Display Language Configuration](/files/gmail_setup/gmail_display_language.png)
 
-2. Clone this repository to your local machine.
+2. Clone repository playwright_test_email to your local machine.
 
 3. Install the required dependencies
 
-4. In the block.feature file, insert your Gmail credentials into the Examples tables.
+4. In the block.feature file, insert into the Examples tables your Gmail credentials (eamil, password, account_name) and
+   account information (name_from_contacts, email_address_from_contacts) from contacts list where should be send 
+   test email.
+   **Note: The optimal choice is to include your personal email account in the contacts and enter it into the Examples 
+   tables to avoid sending unsolicited emails to someone else's account.**
 
 5. Set up your PyCharm environment for pytest testing as shown in the provided image.
 
