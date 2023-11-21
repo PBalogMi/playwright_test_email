@@ -17,7 +17,7 @@ class SendEmail:
                             'email_address_from_contacts': The email address associated with the contact.
         """
         self.page = page
-        self.name_io = None
+        self._name_io = None
         if credentials is not None:
             self.name_from_contacts = credentials["name_from_contacts"]
             self.email_address_from_contacts = credentials["email_address_from_contacts"]
@@ -32,16 +32,16 @@ class SendEmail:
             # Extract id and the 'name' attribute
             # Condition: expected state iframe "Contacts" is already open
             iframe_element = self.page.locator('iframe[id^="I0_"]').first
-            self.name_io = iframe_element.get_attribute('name')
+            self._name_io = iframe_element.get_attribute('name')
         except Exception as e:
             print(f'It looks like iframe named "Contacts" is closed. '
                   f'Iframe "Contacts" will be opened and the testing will continue {e}')
 
         finally:
-            if self.name_io is None:
+            if self._name_io is None:
                 self.page.get_by_label("Contacts").locator("div").nth(2).click()
                 iframe_element = self.page.locator('iframe[id^="I0_"]').first
-                self.name_io = iframe_element.get_attribute('name')
+                self._name_io = iframe_element.get_attribute('name')
 
     def prepare_email(self) -> None:
         """
@@ -50,10 +50,16 @@ class SendEmail:
         :return: None
         """
         self.iframe_name_io()
-        self.page.frame_locator(f"iframe[name=\"{self.name_io}\"]"
-                                ).get_by_label(f"Name: {self.name_from_contacts},"
-                                               f" Subtext: {self.email_address_from_contacts}").click()
-        self.page.frame_locator(f"iframe[name=\"{self.name_io}\"]").get_by_label("Send email").click()
+
+        # check if the iframe for single contact is open
+        # when the test continues without closing the web, single contact stays opened which causes test failure
+        single_contact_iframe = (self.page.frame_locator(f"iframe[name=\"{self._name_io}\"]").locator(".ktSsrf").
+                                 is_visible())
+        if single_contact_iframe is False:
+            self.page.frame_locator(f"iframe[name=\"{self._name_io}\"]"
+                                    ).get_by_label(f"Name: {self.name_from_contacts},"
+                                                   f" Subtext: {self.email_address_from_contacts}").click()
+        self.page.frame_locator(f"iframe[name=\"{self._name_io}\"]").get_by_label("Send email").click()
         self.page.get_by_placeholder("Subject").fill("test")
         self.page.get_by_role("textbox", name="Message Body").fill("test\n")
 
