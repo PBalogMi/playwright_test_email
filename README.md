@@ -37,10 +37,10 @@ opening/closing a web page each time.
 
    ⚠️ **Warning: Protect Your Credentials**
 
-   Do not share credentials through any repository. Always ensure that before sharing your code or committing changes, 
+   **Do not share credentials through any repository. Always ensure that before sharing your code or committing changes, 
    all credentials are removed from 'Examples:' tables within feature files and also from 
    'files/json_shared_credentials/json_shared_credentials.json'. 
-   Protect your sensitive information and avoid sharing it inadvertently.
+   Protect your sensitive information and avoid sharing it inadvertently.**
 
    
    **Note: The optimal choice is to include your personal email account in the contacts and enter it into the 'Examples:' 
@@ -67,10 +67,10 @@ enabling login/logout functionality.
 
    ⚠️ **Warning: Protect Your Credentials**
 
-   Do not share credentials through any repository. Always ensure that before sharing your code or committing changes, 
+   **Do not share credentials through any repository. Always ensure that before sharing your code or committing changes, 
    all credentials are removed from 'Examples:' tables within feature files and also from 
    'files/json_shared_credentials/json_shared_credentials.json'. 
-   Protect your sensitive information and avoid sharing it inadvertently.
+   Protect your sensitive information and avoid sharing it inadvertently.**
  
    **Note: The optimal choice is to include your personal email account in the contacts and enter it into the 'Examples:' 
    tables to avoid sending unsolicited emails to someone else's account.**
