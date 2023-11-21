@@ -48,7 +48,7 @@ opening/closing a web page each time.
 
 2. Set up your PyCharm environment for pytest testing as shown in the provided image.
 
-![PyCharm Configuration](/files/pycharm_setup/pycharm_basic_bdd_setup.png)
+![PyCharm Configuration](/files/pycharm_setup/basic_bdd_setup.png)
 
 3. Run the tests using PyCharm or from the command line with the command pytest.
 
