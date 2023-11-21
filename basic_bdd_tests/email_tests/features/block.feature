@@ -9,8 +9,8 @@ Feature: Verify Gmail account functionality with the FireFox web browser
     And execute logout
 
     Examples:
-      | email              | password   | account_name |
-      | pbalogmi@gmail.com | ***        | Peter Balog  |
+      | email              | password     | account_name |
+      | pbalogmi@gmail.com | ***          | Peter Balog  |
 
   Scenario Outline: The block level 2 - send an email to the address picked from the contact list
     Given Google's "Sign in" page is displayed
@@ -23,8 +23,8 @@ Feature: Verify Gmail account functionality with the FireFox web browser
     And execute logout
 
     Examples:
-      | email              | password   | account_name | name_from_contacts | email_address_from_contacts |
-      | pbalogmi@gmail.com | ***        | Peter Balog  | Peter Balog        | pbalogmi@gmail.com          |
+      | email              | password     | account_name | name_from_contacts | email_address_from_contacts |
+      | pbalogmi@gmail.com | ***          | Peter Balog  | Peter Balog        | pbalogmi@gmail.com          |
 
   Scenario Outline: The block level 3 - send an email to the address picked from the contact list with an attachment
     Given Google's "Sign in" page is displayed
@@ -37,5 +37,5 @@ Feature: Verify Gmail account functionality with the FireFox web browser
     And execute logout
 
     Examples:
-      | email              | password   | account_name | name_from_contacts | email_address_from_contacts |
-      | pbalogmi@gmail.com | ***        | Peter Balog  | Peter Balog        | pbalogmi@gmail.com          |
+      | email              | password     | account_name | name_from_contacts | email_address_from_contacts |
+      | pbalogmi@gmail.com | ***          | Peter Balog  | Peter Balog        | pbalogmi@gmail.com          |
