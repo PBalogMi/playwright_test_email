@@ -57,7 +57,8 @@ opening/closing a web page each time.
 ## ADVANCED BDD TESTS
 
 The problem in Basic BDD tests has been resolved by utilizing `@pytest.fixture(scope="session")` to share a dictionary 
-across scenarios and by managing web page opening and closing through [conftest.py](/advanced_bdd_tests). 
+across scenarios and by managing web page opening and closing through 
+[conftest.py](/advanced_bdd_tests/email_tests/conftest.py). 
 Additionally, a JSON file has been implemented to automatically transfer credentials to the next feature, 
 enabling login/logout functionality.
 
