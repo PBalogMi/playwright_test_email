@@ -28,7 +28,7 @@ Before running the case study, ensure you have the following tools installed:
 
 The primary goal was to establish a straightforward BDD testing environment. 
 However, it comes with clear drawbacks: each scenario outline in 
-the 'basic_bdd_tests/email_tests/features/block.feature' file includes login/logout steps, and there's also the issue of
+the  [block.feature](/basic_bdd_tests/email_tests/features) 'basic_bdd_tests/email_tests/features/block.feature' file includes login/logout steps, and there's also the issue of
 opening/closing a web page each time.
 
 1. In the 'basic_bdd_tests/email_tests/features/block.feature' file, please fill out 'Examples:' tables with Gmail 
