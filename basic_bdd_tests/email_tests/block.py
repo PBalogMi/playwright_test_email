@@ -31,7 +31,7 @@ def fill_user_name(email: str) -> dict:
     return {"email": email}
 
 
-@then(parsers.parse('the password on the second page is filled out with "{password}"'))
+@when(parsers.parse('the password on the second page is filled out with "{password}"'))
 def fill_password(credentials: dict, password: str) -> None:
     """
     Step definition for filling out the password on the second page.
@@ -106,10 +106,10 @@ def send_email(credentials: dict, main_page: Page) -> None:
     call_send_email.send_email()
 
 
-@then(parsers.parse('the user clicks Google account with the name "{account_name}" and then the logout button'))
+@then(parsers.parse('the user clicks Google account with the name "{account_name}"'))
 def google_account(credentials: dict, account_name: str) -> None:
     """
-    Step definition for clicking on a Google account and then logging out.
+    Step definition for clicking on a Google account.
 
     :param credentials: A dictionary containing 'account_name'.
     :param account_name: The name of the Google account.
@@ -117,7 +117,7 @@ def google_account(credentials: dict, account_name: str) -> None:
     credentials["account_name"] = account_name
 
 
-@then(parsers.parse('execute logout'))
+@then(parsers.parse('the user clicks the logout button'))
 def execute_logout(credentials: dict, main_page: Page):
     """
     Step definition for executing the logout process.
