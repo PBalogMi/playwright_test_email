@@ -7,20 +7,14 @@ class SendEmail:
     Class for sending an email using provided credentials.
     """
 
-    def __init__(self, page: Page, credentials=None):
+    def __init__(self, page: Page):
         """
         Initialize the SendEmail object.
 
         :param page: An instance of a Playwright Page object representing the current browser page.
-        :param credentials: A dictionary containing 'name_from_contacts' and 'email_address_from_contacts'.
-                            'name_from_contacts': The name associated with the contact.
-                            'email_address_from_contacts': The email address associated with the contact.
         """
         self.page = page
         self._name_io = None
-        if credentials is not None:
-            self.name_from_contacts = credentials["name_from_contacts"]
-            self.email_address_from_contacts = credentials["email_address_from_contacts"]
 
     def iframe_name_io(self) -> None:
         """
@@ -43,9 +37,13 @@ class SendEmail:
                 iframe_element = self.page.locator('iframe[id^="I0_"]').first
                 self._name_io = iframe_element.get_attribute('name')
 
-    def prepare_email(self) -> None:
+    def prepare_email(self, credentials: dict) -> None:
         """
         Prepares an email by navigating through the iframe and filling out the email details.
+
+        :param credentials: A dictionary containing 'name_from_contacts' and 'email_address_from_contacts'.
+                            'name_from_contacts': The name associated with the contact.
+                            'email_address_from_contacts': The email address associated with the contact.
 
         :return: None
         """
@@ -57,8 +55,8 @@ class SendEmail:
                                  is_visible())
         if single_contact_iframe is False:
             self.page.frame_locator(f"iframe[name=\"{self._name_io}\"]"
-                                    ).get_by_label(f"Name: {self.name_from_contacts},"
-                                                   f" Subtext: {self.email_address_from_contacts}").click()
+                                    ).get_by_label(f"Name: {credentials['name_from_contacts']},"
+                                                   f" Subtext: {credentials['email_address_from_contacts']}").click()
         self.page.frame_locator(f"iframe[name=\"{self._name_io}\"]").get_by_label("Send email").click()
         self.page.get_by_placeholder("Subject").fill("test")
         self.page.get_by_role("textbox", name="Message Body").fill("test\n")

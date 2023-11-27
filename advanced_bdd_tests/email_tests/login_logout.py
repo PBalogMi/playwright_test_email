@@ -1,11 +1,11 @@
 import pytest
 
 from pytest_bdd import scenarios, given, when, then, parsers
-from playwright.sync_api import Page
 
-from src.json_shared_credentials import update_shared_credentials
 from src.login import Login
 from src.logout import Logout
+from src.json_shared_credentials import update_shared_credentials
+
 
 scenarios("features/login_logout.feature")
 
@@ -15,7 +15,7 @@ def shared_credentials() -> dict:
     """
     Fixture for creating the dictionary which will be used for whole session.
 
-    :return: Empty dictionary
+    :return: Empty dictionary for shared credentials.
     """
     return {}
 
@@ -25,7 +25,8 @@ def login_page_open() -> None:
     """
     Step definition for opening Google's "Sign in" page.
 
-    This step does not require any specific action as it's just a precondition for the scenario.
+    This step does not require any specific action as it's just a precondition for the scenario and the setup is
+    made in conftest.py.
     """
     pass
 
@@ -37,13 +38,11 @@ def fill_user_name(shared_credentials: dict, email: str) -> None:
 
     :param shared_credentials: A dictionary which will be used for whole session.
     :param email: The email address to be filled in.
-    :return: A dictionary containing the email address.
     """
     shared_credentials["email"] = email
-    update_shared_credentials(shared_credentials)
 
 
-@then(parsers.parse('the password on the second page is filled out with "{password}"'))
+@when(parsers.parse('the password on the second page is filled out with "{password}"'))
 def fill_password(shared_credentials: dict, password: str) -> None:
     """
     Step definition for filling out the password on the second page.
@@ -52,25 +51,24 @@ def fill_password(shared_credentials: dict, password: str) -> None:
     :param password: The password to be filled in.
     """
     shared_credentials["password"] = password
-    update_shared_credentials(shared_credentials)
 
 
 @then('execute the login into the email')
-def execute_login(shared_credentials: dict, main_page: Page) -> None:
+def execute_login(shared_credentials: dict, login: Login) -> None:
     """
     Step definition for executing the login into the email account.
 
     :param shared_credentials: A dictionary dedicated for whole session containing 'email' and 'password'.
-    :param main_page: An instance of a Playwright Page object representing the current browser page.
+    :param login: The instance of Login to perform login operations.
     """
-    call_execute_login = Login(main_page)
-    call_execute_login.execute_login(shared_credentials)
+    login.execute_login(shared_credentials)
 
 
-@when(parsers.parse('the user clicks the Google account with the name "{account_name}" and then the logout button'))
+@when(parsers.parse('the user clicks the Google account with the name "{account_name}"'))
 def google_account(shared_credentials: dict, account_name: str) -> None:
     """
-    Step definition for clicking on a Google account and then logging out.
+    Step definition for clicking on a Google account and then logging out, also update credentials into JSON file for
+    the future use.
 
     :param shared_credentials: A dictionary dedicated for whole session containing 'account_name'.
     :param account_name: The name of the Google account.
@@ -80,12 +78,11 @@ def google_account(shared_credentials: dict, account_name: str) -> None:
 
 
 @then(parsers.parse('execute logout'))
-def execute_logout(shared_credentials: dict, main_page: Page) -> None:
+def execute_logout(shared_credentials: dict, logout: Logout) -> None:
     """
     Step definition for executing the logout process.
 
     :param shared_credentials: A dictionary dedicated for whole session containing 'account_name'.
-    :param main_page: An instance of a Playwright Page object representing the current browser page.
+    :param logout: The instance of Logout to perform logout operations.
     """
-    call_execute_logout = Logout(main_page)
-    call_execute_logout.execute_logout(shared_credentials)
+    logout.execute_logout(shared_credentials)

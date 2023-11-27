@@ -14,7 +14,8 @@ def login_page_open() -> None:
     """
     Step definition for opening Google's "Sign in" page.
 
-    This step does not require any specific action as it's just a precondition for the scenario.
+    This step does not require any specific action as it's just a precondition for the scenario and the setup is
+    made in conftest.py.
     """
     pass
 
@@ -54,7 +55,7 @@ def execute_login(credentials: dict, main_page: Page) -> None:
     call_execute_login.execute_login(credentials)
 
 
-@then(parsers.parse(
+@when(parsers.parse(
     'pick up the name "{name_from_contacts}" with email address "{email_address_from_contacts}" from contacts'))
 def create_email(credentials: dict, name_from_contacts: str, email_address_from_contacts: str) -> None:
     """
@@ -87,8 +88,8 @@ def prepare_email(credentials: dict, main_page: Page) -> None:
     :param credentials: A dictionary containing 'email', 'name_from_contacts', and 'email_address_from_contacts'.
     :param main_page: An instance of a Playwright Page object representing the current browser page.
     """
-    call_prepare_email = SendEmail(main_page, credentials)
-    call_prepare_email.prepare_email()
+    call_prepare_email = SendEmail(main_page)
+    call_prepare_email.prepare_email(credentials)
     call_prepare_email.add_attachment()
     call_prepare_email.send_email()
 
@@ -101,12 +102,12 @@ def send_email(credentials: dict, main_page: Page) -> None:
     :param credentials: A dictionary containing 'email', 'name_from_contacts', and 'email_address_from_contacts'.
     :param main_page: An instance of a Playwright Page object representing the current browser page.
     """
-    call_send_email = SendEmail(main_page, credentials)
-    call_send_email.prepare_email()
+    call_send_email = SendEmail(main_page)
+    call_send_email.prepare_email(credentials)
     call_send_email.send_email()
 
 
-@then(parsers.parse('the user clicks Google account with the name "{account_name}"'))
+@when(parsers.parse('the user clicks Google account labeled "{account_name}"'))
 def google_account(credentials: dict, account_name: str) -> None:
     """
     Step definition for clicking on a Google account.

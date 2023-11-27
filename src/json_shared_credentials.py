@@ -24,11 +24,9 @@ def read_shared_credentials() -> dict:
     :return: Dictionary containing shared credentials.
     """
     file_path = get_file_path()
-    #print(f'+++FILE SIZE++++++++++{os.stat(file_path).st_size}++++++++++++++++++++++++++')
     try:
         if os.stat(file_path).st_size == 0:
             with open(file_path, 'w') as file:
-                #file.write('{}')
                 json.dump({}, file)
 
         with open(file_path, 'r') as file:
