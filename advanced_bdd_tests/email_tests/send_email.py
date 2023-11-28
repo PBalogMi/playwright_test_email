@@ -41,15 +41,6 @@ def login_page_open(shared_credentials: dict, login: Login) -> None:
     login.execute_login(shared_credentials)
 
 
-@when('you are already logged in the Google account')
-def already_logged_in() -> None:
-    """
-    Step definition that the user is already logged in the Google account.
-
-    This step does not require any specific action as it's just a condition for the scenario.
-    """
-
-
 @when(parsers.parse(
     'the name "{name_from_contacts}" with email address "{email_address_from_contacts}" is picked up from contacts'))
 def create_email(shared_credentials: dict, name_from_contacts: str, email_address_from_contacts: str,
