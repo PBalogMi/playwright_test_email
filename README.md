@@ -3,7 +3,9 @@
 ## Description
 
 This project serves as a case study on how to implement Behavior Driven Development (BDD) testing for a Gmail account 
-using Python, Gherkin, pytest_bdd, and Playwright.
+using Python, Gherkin, pytest_bdd, and Playwright. The project is divided into two sections:
+- [BASIC BDD TESTS](#basic-bdd-tests) 
+- [ADVANCED BDD TESTS](#advanced-bdd-tests)
 
 ## Prerequisites
 
