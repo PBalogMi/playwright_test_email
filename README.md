@@ -28,18 +28,18 @@ Before running the case study, ensure you have the following tools installed:
 
 The primary goal was to establish a straightforward BDD testing environment. 
 However, it comes with clear drawbacks: each Scenario Outline in 
-the [block.feature](/basic_bdd_tests/email_tests/features) file includes login/logout steps, and there's also the issue of
-opening/closing a web page each time.
+the [block.feature](/basic_bdd_tests/email_tests/features/block.feature) file includes login/logout steps, and there's 
+also the issue of opening/closing a web page each time.
 
-1. In the [block.feature](/basic_bdd_tests/email_tests/features) file, please fill out 'Examples:' tables with Gmail 
-   credentials (eamil, password, account_name) and account information (name_from_contacts, email_address_from_contacts)
-   from contacts list where test email should be sent.
+1. In the [block.feature](/basic_bdd_tests/email_tests/features/block.feature) file, please fill out 'Examples:' tables 
+   with Gmail credentials (email, password, account_name) and account information (name_from_contacts, 
+   email_address_from_contacts) from contacts list where test email should be sent.
 
    ⚠️ **Warning: Protect Your Credentials**
 
    **Do not share credentials through any repository. Always ensure that before sharing your code or committing changes, 
-   all credentials are removed from 'Examples:' tables within [block.feature](/basic_bdd_tests/email_tests/features) 
-   files and also from [json_shared_credentials.json](/files/json_shared_credentials) file. 
+   all credentials are removed from 'Examples:' tables within [block.feature](/basic_bdd_tests/email_tests/features/block.feature) 
+   files and also from [json_shared_credentials.json](/files/json_shared_credentials/json_shared_credentials.json) file. 
    Protect your sensitive information and avoid sharing it inadvertently.**
 
    
@@ -56,11 +56,10 @@ opening/closing a web page each time.
 
 ## ADVANCED BDD TESTS
 
-The problem in Basic BDD tests has been resolved by utilizing `@pytest.fixture(scope="session")` to share a dictionary 
-across scenarios and by managing web page opening and closing through 
-[conftest.py](/advanced_bdd_tests/email_tests/conftest.py). 
-Additionally, a JSON file has been implemented to automatically transfer credentials to the next feature, 
-enabling login/logout functionality.
+The issue within Basic BDD tests has been resolved by leveraging @pytest.fixture(scope="session") for dictionary sharing
+across scenarios. Managing the opening and closing of web pages has been handled through [conftest.py](/advanced_bdd_tests/email_tests/conftest.py), 
+alongside the initialization of essential classes from the 'src' folder. Moreover, the implementation of a JSON file 
+facilitates the automatic transfer of credentials to subsequent features, enabling seamless login/logout functionality."
 
 1. In the [*.feature](/advanced_bdd_tests/email_tests/features) files, please fill out 'Examples:' tables with Gmail 
    credentials (eamil, password, account_name) and account information (name_from_contacts, email_address_from_contacts)
@@ -70,7 +69,7 @@ enabling login/logout functionality.
 
    **Do not share credentials through any repository. Always ensure that before sharing your code or committing changes, 
    all credentials are removed from 'Examples:' tables within feature files and also from 
-   [json_shared_credentials.json](/files/json_shared_credentials). 
+   [json_shared_credentials.json](/files/json_shared_credentials/json_shared_credentials.json). 
    Protect your sensitive information and avoid sharing it inadvertently.**
  
    **Note: The optimal choice is to include your personal email account in the contacts and enter it into the 'Examples:' 
