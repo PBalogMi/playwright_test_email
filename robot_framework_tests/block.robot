@@ -40,8 +40,9 @@ execute the login into the email
     click   id=passwordNext
 
 the user clicks Google account labeled Peter Balog
-    click    xpath=//html/body/div[7]/div[3]/div/div[1]/div/div[2]/div[2]/header/div[2]/div[3]/div[1]/div[2]/div/a
-    #${account_element}=     get element by    Label     Google Account: ${ACCOUNT_NAME}    \n(${EMAIL})
+    # click    xpath=//html/body/div[7]/div[3]/div/div[1]/div/div[2]/div[2]/header/div[2]/div[3]/div[1]/div[2]/div/a
+    ${account_element}=     get element by     Label     Google Account: ${ACCOUNT_NAME}\n(${EMAIL})
+    click    ${account_element}
     #get element by    ${account_element}
     #${frame}=    get element    iframe[name='account']
     #switch page    ${frame}
@@ -50,7 +51,7 @@ the user clicks the logout button
     # click     id=SignOut
     # click       xpath=//[@name='Sign out']
     # click with options        xpath=//[@name='Sign out']
-    ${sign_out_element}    get element by role    link      name=Sign out
+    ${sign_out_element}=    get element by role    LINK      name=Sign out
     click   ${sign_out_element}     click with options    BUTTON_LEFT
 
 
