@@ -30,7 +30,7 @@ Open Google's "Sign in" page
     new page    ${BASE_URL}     commit
 
 the login name is filled out with the email address
-    type text    css=#identifierId      pbalogmi@gmail.com
+    type text    css=#identifierId      ${EMAIL}
     click    id=identifierNext
 
 the password on the second page is filled out with password
