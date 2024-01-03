@@ -1,0 +1,5 @@
+/robot_framework/log.html
+/robot_framework/output.xml
+/robot_framework/playwright-log.txt
+/robot_framework/report.html
+config.env
