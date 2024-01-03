@@ -91,13 +91,13 @@ facilitates the automatic transfer of credentials to subsequent features, enabli
 
 ![Terminal commands](/files/terminal_commands/terminal_commands_advanced_bdd_setup.png)
 
+## BONUS ROBOT FRAMEWORK
+
+"Work in progress. The current code is solely for [login and logout](/robot_framework/block.robot) functionalities."
+
 ## Contributing
 If you'd like to contribute to this project, feel free to open an issue or submit a pull request. 
 All contributions are welcome!
 
 ## License
 This project is licensed under the MIT License.
-
-## BONUS ROBOT FRAMEWORK
-
-"Work in progress. The current code is solely for [login and logout](/robot_framework/block.robot) functionalities."
