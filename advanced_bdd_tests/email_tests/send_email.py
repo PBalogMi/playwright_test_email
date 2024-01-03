@@ -8,6 +8,7 @@ from src.send_email import SendEmail
 from src.json_shared_credentials import read_shared_credentials
 from src.json_important_keys import check_json_keys
 from src.custom_exceptions import MissingDataError
+from src.get_password import bdd_get_password_from_env
 
 
 scenarios("features/send_email.feature")
@@ -38,6 +39,7 @@ def login_page_open(shared_credentials: dict, login: Login) -> None:
     if check_json_file:
         raise MissingDataError
     shared_credentials.update(shared_credentials_from_json_file)  # transfer credential from login_logout.py test
+    shared_credentials['password'] = bdd_get_password_from_env()
     login.execute_login(shared_credentials)
 
 

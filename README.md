@@ -7,6 +7,10 @@ using Python, Gherkin, pytest_bdd, and Playwright. The project is divided into t
 - [BASIC BDD TESTS](#basic-bdd-tests) 
 - [ADVANCED BDD TESTS](#advanced-bdd-tests)
 
+In today's market, the demand for APP testing also encompasses the Robot Framework. You can explore an example here:
+- [BONUS ROBOT FRAMEWORK](#bonus-robot-framework)
+
+
 ## Prerequisites
 
 Before running the case study, ensure you have the following tools installed:
@@ -34,14 +38,15 @@ the [block.feature](/basic_bdd_tests/email_tests/features/block.feature) file in
 also the issue of opening/closing a web page each time.
 
 1. In the [block.feature](/basic_bdd_tests/email_tests/features/block.feature) file, please fill out 'Examples:' tables 
-   with Gmail credentials (email, password, account_name) and account information (name_from_contacts, 
-   email_address_from_contacts) from contacts list where test email should be sent.
+   with Gmail credentials (email, account_name) and account information (name_from_contacts, 
+   email_address_from_contacts) from contacts list where test email should be sent. The email account's password 
+   needs to be entered in the [config.env](/config.env) file.
 
    ⚠️ **Warning: Protect Your Credentials**
 
    **Do not share credentials through any repository. Always ensure that before sharing your code or committing changes, 
    all credentials are removed from 'Examples:' tables within [block.feature](/basic_bdd_tests/email_tests/features/block.feature) 
-   files and also from [json_shared_credentials.json](/files/json_shared_credentials/json_shared_credentials.json) file. 
+   files and also from the [config.env](/config.env) file. 
    Protect your sensitive information and avoid sharing it inadvertently.**
 
    
@@ -64,14 +69,14 @@ alongside the initialization of essential classes from the 'src' folder. Moreove
 facilitates the automatic transfer of credentials to subsequent features, enabling seamless login/logout functionality."
 
 1. In the [*.feature](/advanced_bdd_tests/email_tests/features) files, please fill out 'Examples:' tables with Gmail 
-   credentials (eamil, password, account_name) and account information (name_from_contacts, email_address_from_contacts)
-   from contacts list where test email should be sent.
+   credentials (eamil, account_name) and account information (name_from_contacts, email_address_from_contacts)
+   from contacts list where test email should be sent.  The email account's password 
+   needs to be entered in the [config.env](/config.env) file.
 
    ⚠️ **Warning: Protect Your Credentials**
 
    **Do not share credentials through any repository. Always ensure that before sharing your code or committing changes, 
-   all credentials are removed from 'Examples:' tables within feature files and also from 
-   [json_shared_credentials.json](/files/json_shared_credentials/json_shared_credentials.json). 
+   all credentials are removed from 'Examples:' tables within feature files and also from [config.env](/config.env) file.
    Protect your sensitive information and avoid sharing it inadvertently.**
  
    **Note: The optimal choice is to include your personal email account in the contacts and enter it into the 'Examples:' 
@@ -92,3 +97,7 @@ All contributions are welcome!
 
 ## License
 This project is licensed under the MIT License.
+
+## BONUS ROBOT FRAMEWORK
+
+"Work in progress. The current code is solely for [login and logout](/robot_framework_tests/block.robot) functionalities."

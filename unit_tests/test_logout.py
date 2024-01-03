@@ -25,7 +25,8 @@ class TestLogout(unittest.TestCase):
 
             self.logout.execute_logout(credentials)
 
-            mock_get_by_label.assert_called_once_with(f"Google Account: {credentials['account_name']}  \n({credentials['email']})")
+            mock_get_by_label.assert_called_once_with(f"Google Account: {credentials['account_name']}  \n"
+                                                      f"({credentials['email']})")
             mock_get_by_label.click.assert_called()
 
             mock_frame_locator.assert_called_once_with("iframe[name=\"account\"]")

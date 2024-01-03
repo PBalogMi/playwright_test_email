@@ -4,6 +4,7 @@ from playwright.sync_api import Page
 from src.login import Login
 from src.logout import Logout
 from src.send_email import SendEmail
+from src.get_password import bdd_get_password_from_env
 
 
 scenarios("features/block.feature")
@@ -32,15 +33,14 @@ def fill_user_name(email: str) -> dict:
     return {"email": email}
 
 
-@when(parsers.parse('the password on the second page is filled out with "{password}"'))
-def fill_password(credentials: dict, password: str) -> None:
+@when('the password on the second page is populated using the password stored in the \"config.env\" file')
+def fill_password(credentials: dict) -> None:
     """
-    Step definition for filling out the password on the second page.
+    Step definition for filling out the password on the second page thanks to stored password in the "config.env" file .
 
     :param credentials: A dictionary containing the email address.
-    :param password: The password to be filled in.
     """
-    credentials["password"] = password
+    credentials["password"] = bdd_get_password_from_env()
 
 
 @then('execute the login into the email')

@@ -8,7 +8,7 @@ def check_json_keys() -> bool:
 
     :return bool: True if any required key is missing, False otherwise.
     """
-    required_keys = ["email", "password", "account_name"]
+    required_keys = ["email", "account_name"]
     working_directory = os.getcwd()
     path_to_file = os.path.join(working_directory, 'files/json_shared_credentials/json_shared_credentials.json')
 

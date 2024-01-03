@@ -4,6 +4,7 @@ from pytest_bdd import scenarios, given, when, then, parsers
 
 from src.login import Login
 from src.logout import Logout
+from src.get_password import bdd_get_password_from_env
 from src.json_shared_credentials import update_shared_credentials
 
 
@@ -42,15 +43,14 @@ def fill_user_name(shared_credentials: dict, email: str) -> None:
     shared_credentials["email"] = email
 
 
-@when(parsers.parse('the password on the second page is filled out with "{password}"'))
-def fill_password(shared_credentials: dict, password: str) -> None:
+@when('the password on the second page is populated using the password stored in the \"config.env\" file')
+def fill_password(shared_credentials: dict) -> None:
     """
-    Step definition for filling out the password on the second page.
+    Step definition for filling out the password on the second page from the "config.env" file.
 
     :param shared_credentials: A dictionary dedicated for whole session containing the email address.
-    :param password: The password to be filled in.
     """
-    shared_credentials["password"] = password
+    shared_credentials["password"] = bdd_get_password_from_env()
 
 
 @then('execute the login into the email')

@@ -51,6 +51,8 @@ def update_shared_credentials(credentials: dict) -> None:
 
     :param credentials: Dictionary containing credentials to update/add.
     """
+    if "password" in credentials:
+        del credentials["password"]
     file_path = get_file_path()
     shared_credentials = read_shared_credentials()
 

@@ -15,7 +15,7 @@ ${EMAIL}        pbalogmi@gmail.com
 Login/Logout
     Open Google's "Sign in" page
     the login name is filled out with the email address
-    the password on the second page is filled out with password from the file 'config.env'
+    the password on the second page is populated using the password stored in the "config.env" file
     execute the login into the email
     the user clicks Google account labeled Peter Balog
     the user clicks the logout button
@@ -31,8 +31,8 @@ the login name is filled out with the email address
     type text    css=#identifierId      ${EMAIL}
     click    id=identifierNext
 
-the password on the second page is filled out with password from the file 'config.env'
-    ${password}=     get password from env
+the password on the second page is populated using the password stored in the "config.env" file
+    ${password}=     robot get password from env
     type text   xpath=//input[@type='password' and @name='Passwd']      ${password}
 
 execute the login into the email
