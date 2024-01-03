@@ -1,8 +1,6 @@
 *** Settings ***
 Library    Browser
-
-
-
+Library    ../src/get_password.py
 
 
 *** Variables ***
@@ -13,28 +11,29 @@ ${ACCOUNT_NAME}     Peter Balog
 ${EMAIL}        pbalogmi@gmail.com
 
 
-
 *** Test Cases ***
 Login/Logout
     Open Google's "Sign in" page
     the login name is filled out with the email address
-    the password on the second page is filled out with password
+    the password on the second page is filled out with password from the file 'config.env'
     execute the login into the email
     the user clicks Google account labeled Peter Balog
     the user clicks the logout button
 
+
 *** Keywords ***
 Open Google's "Sign in" page
     new browser    ${BROWSER}   headless=${HEADLESS}
-    set browser timeout    59
+    set browser timeout    45
     new page    ${BASE_URL}     commit
 
 the login name is filled out with the email address
     type text    css=#identifierId      ${EMAIL}
     click    id=identifierNext
 
-the password on the second page is filled out with password
-    type text   xpath=//input[@type='password' and @name='Passwd']      ***
+the password on the second page is filled out with password from the file 'config.env'
+    ${password}=     get password from env
+    type text   xpath=//input[@type='password' and @name='Passwd']      ${password}
 
 execute the login into the email
     click   id=passwordNext
