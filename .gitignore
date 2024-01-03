@@ -3,3 +3,10 @@
 /robot_framework/playwright-log.txt
 /robot_framework/report.html
 config.env
+/.idea/.gitignore
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/playwright_test_email.iml
+/.idea/inspectionProfiles/profiles_settings.xml
+/.idea/inspectionProfiles/Project_Default.xml
+/.idea/vcs.xml
