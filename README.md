@@ -100,4 +100,4 @@ This project is licensed under the MIT License.
 
 ## BONUS ROBOT FRAMEWORK
 
-"Work in progress. The current code is solely for [login and logout](/robot_framework_tests/block.robot) functionalities."
+"Work in progress. The current code is solely for [login and logout](/robot_framework/block.robot) functionalities."
