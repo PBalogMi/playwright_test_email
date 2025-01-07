@@ -1,6 +1,6 @@
 *** Settings ***
 Library    Browser
-Library    ../src/get_password.py
+Library    ../src/get_password_for_robot.py
 
 
 *** Variables ***

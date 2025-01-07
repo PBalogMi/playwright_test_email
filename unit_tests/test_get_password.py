@@ -1,6 +1,10 @@
+"""
+This project serves as a case study on how to implement Behavior Driven Development (BDD) testing for a Gmail account 
+using Python, Gherkin, pytest_bdd, and Playwright.
+"""
 import unittest
 from unittest.mock import patch
-from src.get_password import get_env_vars, robot_get_password_from_env, bdd_get_password_from_env
+from src.get_password_for_robot import get_env_vars, robot_get_password_from_env, bdd_get_password_from_env
 
 
 class TestEnvVars(unittest.TestCase):
