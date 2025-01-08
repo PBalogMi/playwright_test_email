@@ -2,7 +2,7 @@
 /robot_framework/output.xml
 /robot_framework/playwright-log.txt
 /robot_framework/report.html
-#config.env
+config.env
 /.idea/.gitignore
 /.idea/misc.xml
 /.idea/modules.xml
