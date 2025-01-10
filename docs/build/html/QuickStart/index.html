@@ -24,7 +24,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="&lt;no title&gt;" href="../Development/index.html" />
+    <link rel="next" title="DEVELOPMENT" href="../Development/index.html" />
     <link rel="prev" title="From Python to Pytest BDD thanks to Playwright and Gherkin" href="../index.html" /> 
 </head>
 
@@ -47,13 +47,15 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">QUICK START:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Prerequisites</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#getting-started">Getting Started</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Bonus:</span></p>
+<p class="caption" role="heading"><span class="caption-text">CONTENTS:</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../Development/index.html">DEVELOPMENT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Testing/index.html">BDD TESTS DEVELOPING</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../RobotFramework/index.html">Robot framework</a></li>
 </ul>
 
@@ -87,8 +89,8 @@
 <ul class="simple">
 <li><p>Python 3.10 or higher</p></li>
 <li><p>PyCharm Community Edition (or any other code editor)</p></li>
-<li><p>Linux (Ubuntu 22.04), or Windows (optional with WSL)</p></li>
-<li><p>Firefox Browser (Version 119.0.1, 64-bit or higher)</p></li>
+<li><p>use Windows, optional Linux/MacOS</p></li>
+<li><p>Firefox Browser (Version 134.0., 64-bit or higher)</p></li>
 </ul>
 </section>
 <section id="getting-started">
@@ -138,8 +140,6 @@
 </div>
 </div></blockquote>
 </li>
-</ol>
-<ol class="arabic" start="6">
 <li><p>Into a <a class="reference external" href="../../config.env">config.env</a> file in the root directory add the password instead of <a href="#id1"><span class="problematic" id="id2">**</span></a>** for the email account.</p>
 <blockquote>
 <div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>PASSWORD=your_password
@@ -147,7 +147,7 @@
 </div>
 </div></blockquote>
 </li>
-<li><p>In the <a class="reference external" href="../../bdd_tests/features">*.feature</a> files, please fill out ‘Examples:’ tables with Gmail
+<li><p>In the features files, please fill out ‘Examples:’ tables with Gmail
 credentials (eamil, account_name) and account information (name_from_contacts, email_address_from_contacts)
 from contacts list where test email should be sent.  The email account’s password
 needs to be entered as described in the step number six above.</p></li>
@@ -164,7 +164,7 @@ Protect your sensitive information and avoid sharing it inadvertently.</strong><
 <p>The optimal choice is to include your personal email account in the contacts and enter it into the ‘Examples:’
 tables to avoid sending unsolicited emails to someone else’s account.**</p>
 </div>
-<ol class="arabic" start="8">
+<ol class="arabic" start="9">
 <li><p>Execute the test cases by command below.</p>
 <blockquote>
 <div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>pytest bdd_tests/login_logout.py &amp;&amp; pytest bdd_tests/send_email.py
@@ -180,7 +180,7 @@ tables to avoid sending unsolicited emails to someone else’s account.**</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="../index.html" class="btn btn-neutral float-left" title="From Python to Pytest BDD thanks to Playwright and Gherkin" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../Development/index.html" class="btn btn-neutral float-right" title="&lt;no title&gt;" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../Development/index.html" class="btn btn-neutral float-right" title="DEVELOPMENT" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

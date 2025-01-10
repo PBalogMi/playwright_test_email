@@ -9,4 +9,4 @@ from bdd_tests.fixtures.context import context
 from bdd_tests.fixtures.logged_in_page import logged_in_page
 from bdd_tests.fixtures.login import login
 from bdd_tests.fixtures.logout import logout
-from bdd_tests.fixtures.send_email import send_the_email
+from bdd_tests.fixtures.send_the_email import send_the_email
