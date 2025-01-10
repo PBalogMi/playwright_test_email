@@ -49,7 +49,7 @@ Getting Started
 
         playwright install        
 
-7. Into a `config.env <../../config.env>`_ file in the root directory add the password instead of **** for the email account.
+7. Into a **config.env** file in the root directory add the password instead of **** for the email account.
 
     .. code:: text
 
