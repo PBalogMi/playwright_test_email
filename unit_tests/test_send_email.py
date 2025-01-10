@@ -3,61 +3,77 @@ This project serves as a case study on how to implement Behavior Driven Developm
 using Python, Gherkin, pytest_bdd, and Playwright.
 """
 import unittest
-import os
-from unittest.mock import Mock
-from playwright.sync_api import Page
+from unittest.mock import MagicMock
 from src.send_email import SendEmail
 
-
 class TestSendEmail(unittest.TestCase):
+    """
+    Unit tests for the SendEmail class.
+    """
 
     def setUp(self):
-        # Create an instance of the Page object from Playwright
-        self.mocked_page = Mock(spec=Page)
-
-        # Initialize SendEmail object with the Page object
-        self.send_email = SendEmail(self.mocked_page)
+        """
+        Set up the test case with a mock Page object and an instance of SendEmail.
+        """
+        self.mock_page = MagicMock()
+        self.send_email = SendEmail(self.mock_page)
 
     def test_iframe_name_io(self):
-        # Mock the necessary page elements
-        iframe_element = self.mocked_page.locator('iframe[id^="I0_"]').first
-        iframe_element.get_attribute.return_value = 'Contacts'
+        """
+        Test the iframe_name_io method to ensure it correctly sets the iframe name.
+        """
+        # Mock the locator and get_attribute methods
+        mock_iframe_element = MagicMock()
+        self.mock_page.locator.return_value.first = mock_iframe_element
+        mock_iframe_element.get_attribute.return_value = 'mocked_iframe_name'
 
         # Call the method
         self.send_email.iframe_name_io()
 
-        # Assertions
-        self.assertEqual(self.send_email._name_io, 'Contacts')
+        # Assert the iframe name is set correctly
+        # pylint: disable=protected-access
+        self.assertEqual(self.send_email._name_io, 'mocked_iframe_name')
 
     def test_prepare_email(self):
-        # Mock the necessary page elements and credentials
-        self.send_email.iframe_name_io = lambda: None  # Stubbing the method for simplicity
-        self.mocked_page.frame_locator.return_value.is_visible.return_value = False
-        self.mocked_page.frame_locator.return_value.get_by_label.return_value.click.return_value = None
+        """
+        Test the prepare_email method to ensure it correctly prepares the email.
+        """
+        # Mock the iframe_name_io method
+        self.send_email.iframe_name_io = MagicMock()
+        # pylint: disable=protected-access
+        self.send_email._name_io = 'mocked_iframe_name'
 
-        # Define credentials
-        credentials = {'name_from_contacts': 'John Doe', 'email_address_from_contacts': 'john@example.com'}
+        # Mock the credentials
+        credentials = {
+            'name_from_contacts': 'John Doe',
+            'email_address_from_contacts': 'john.doe@example.com'
+        }
 
         # Call the method
         self.send_email.prepare_email(credentials)
 
-        # Assertions for page interactions (mocked)
-        self.mocked_page.frame_locator.assert_called()
-        self.mocked_page.frame_locator.return_value.get_by_label.assert_called()
+        # Assert the correct methods were called
+        self.mock_page.frame_locator.assert_any_call('iframe[name="mocked_iframe_name"]')
+        self.mock_page.frame_locator().get_by_label.assert_any_call("Search")
+        self.mock_page.frame_locator().get_by_placeholder().fill.assert_called_with("John Doe")
+        self.mock_page.frame_locator().get_by_label().click.assert_called()
+        self.mock_page.get_by_placeholder().fill.assert_called_with("test")
+        self.mock_page.get_by_role().fill.assert_called_with("test\n")
 
-    def test_add_attachment(self):
-        working_directory = os.getcwd()
-        parent_directory = os.path.dirname(working_directory)
-        path_to_file = os.path.join(parent_directory, 'files/attachment/funny_picture.png')
-        file_exists = os.path.exists(path_to_file)
-        self.assertTrue(file_exists, f"File {path_to_file} does not exist")
-
-    def test_send_email(self):
-        # Mock necessary page elements
-        self.mocked_page.get_by_label.return_value.click.return_value = None
+    def test_prepare_email_for_attachement(self):
+        """
+        Test the prepare_email_for_attachement method to ensure it correctly prepares the email with an attachment.
+        """
+        # Mock the iframe_name_io method
+        self.send_email.iframe_name_io = MagicMock()
+        # pylint: disable=protected-access
+        self.send_email._name_io = 'mocked_iframe_name'
 
         # Call the method
-        self.send_email.send_email()
+        self.send_email.prepare_email_for_attachement()
 
-        # Assertions for page interactions (mocked)
-        self.mocked_page.get_by_label.assert_called()
+        # Assert the correct methods were called
+        self.mock_page.frame_locator.assert_any_call('iframe[name="mocked_iframe_name"]')
+        self.mock_page.frame_locator().get_by_label().click.assert_called()
+        self.mock_page.get_by_placeholder().fill.assert_called_with("test with attachement")
+        self.mock_page.get_by_role().fill.assert_called_with("test with funny picture\n")
