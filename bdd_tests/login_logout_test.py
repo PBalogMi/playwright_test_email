@@ -1,8 +1,7 @@
 """
-This project serves as a case study on how to implement Behavior Driven Development (BDD) testing for a Gmail account 
-using Python, Gherkin, pytest_bdd, and Playwright.
+This project serves as a case study on how to implement Behavior Driven Development (BDD)
+testing for a Gmail account using Python, Gherkin, pytest_bdd, and Playwright.
 """
-# pylint: disable=W0621
 from pytest_bdd import scenarios, given, when, then, parsers
 
 from src.login import Login
@@ -13,10 +12,10 @@ from src.get_password import get_password_from_env
 
 scenarios("features/login_logout.feature")
 
-directory_to_shared_credentials = "resources"
-json_file_name = "shared_credentials.json"
+DIRECTORY_TO_SHARED_CREDENTIALS = "resources"
+JSON_FILE_NAME = "shared_credentials.json"
 
-credentials_and_password = JsonFile(directory=directory_to_shared_credentials, file_name=json_file_name)
+credentials_and_password = JsonFile(directory=DIRECTORY_TO_SHARED_CREDENTIALS, file_name=JSON_FILE_NAME)
 
 @given('Google\'s \"Sign in\" page is displayed by FireFox web browser')
 def login_page_open() -> None:

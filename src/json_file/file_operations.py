@@ -1,7 +1,26 @@
+"""
+This project serves as a case study on how to implement Behavior Driven Development (BDD)
+testing for a Gmail account using Python, Gherkin, pytest_bdd, and Playwright.
+"""
 import os
 
 class FileOperations:
+    """
+    A class to handle basic file operations such as ensuring the path exists,
+    checking if a file exists, and deleting a file.
+
+    Attributes:
+        directory (str): The directory where the file is located.
+        file_name (str): The name of the file.
+        path_to_file (str): The full path to the file.
+    """
     def __init__(self, directory: str, file_name: str):
+        """
+        Initializes the FileOperations object with the provided directory and file name.
+
+        :param directory: The directory where the file is located.
+        :param file_name: The name of the file.
+        """
         self.directory = directory
         self.file_name = file_name
         self.path_to_file = os.path.join(self.directory, self.file_name)

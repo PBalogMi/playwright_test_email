@@ -1,6 +1,6 @@
 """
-This project serves as a case study on how to implement Behavior Driven Development (BDD) testing for a Gmail account 
-using Python, Gherkin, pytest_bdd, and Playwright.
+This project serves as a case study on how to implement Behavior Driven Development (BDD)
+testing for a Gmail account using Python, Gherkin, pytest_bdd, and Playwright.
 """
 from pytest_bdd import scenarios, given, when, then, parsers
 
@@ -12,10 +12,10 @@ from src.json_file.json_file import JsonFile
 
 scenarios("features/send_email.feature")
 
-directory_to_shared_credentials = "resources"
-json_file_name = "shared_credentials.json"
+DIRECTORY_TO_SHARED_CREDENTIALS = "resources"
+JSON_FILE_NAME = "shared_credentials.json"
 
-credentials_and_password = JsonFile(directory=directory_to_shared_credentials, file_name=json_file_name)
+credentials_and_password = JsonFile(directory=DIRECTORY_TO_SHARED_CREDENTIALS, file_name=JSON_FILE_NAME)
 
 
 @given('Google\'s "Sign in" page is displayed, system will automatically login into account based on '
@@ -49,19 +49,18 @@ def create_email(name_from_contacts: str, email_address_from_contacts: str,
     send_the_email.prepare_email(shared_credentials)
 
 
-@when('the name and email address from contacts are already given from level 2 - Examples table')
-def prepare_email_with_attachement(send_the_email: SendEmail) -> None:
+@when('the email is prepared for attachement')
+def prepare_email(send_the_email: SendEmail) -> None:
     """
     Step definition that the name_from_contacts and email_address_from_contacts are already given.
 
     :param shared_credentials: A dictionary containing the email address.
     :param send_the_email: The instance of SendEmail to perform send_email operations.
     """
-    shared_credentials = credentials_and_password.read_json_file()
-    send_the_email.prepare_email_with_attachement(shared_credentials)
+    send_the_email.prepare_email_for_attachement()
 
 
-@then('attach file named as funny_picture.png')
+@then('attach the file named as funny_picture.png')
 def attach_file(send_the_email: SendEmail) -> None:
     """
     Step definition for attaching a file named "funny_picture.png" to the email.
@@ -78,7 +77,6 @@ def send_email(send_the_email: SendEmail) -> None:
 
     :param send_the_email: The instance of SendEmail to perform send_email operations.
     """
-
     send_the_email.send_email()
 
 

@@ -1,2 +1,6 @@
+[MASTER]
+disable=
+    R0903, # Too few public methods
+
 [FORMAT]
 max-line-length=120

@@ -1,9 +1,10 @@
 """
-This project serves as a case study on how to implement Behavior Driven Development (BDD) testing for a Gmail account 
-using Python, Gherkin, pytest_bdd, and Playwright.
+This project serves as a case study on how to implement Behavior Driven Development (BDD)
+testing for a Gmail account using Python, Gherkin, pytest_bdd, and Playwright.
 """
+# pylint: disable=E2502
 import os
-from playwright.sync_api import Page
+from playwright.sync_api import Page, Error
 
 
 class SendEmail:
@@ -31,7 +32,7 @@ class SendEmail:
             # Condition: expected state iframe "Contacts" is already open
             iframe_element = self.page.locator('iframe[id^="I0_"]').first
             self._name_io = iframe_element.get_attribute('name')
-        except Exception as e:
+        except Error as e:
             print(f'It looks like iframe named "Contacts" is closed. '
                   f'Iframe "Contacts" will be opened and the testing will continue {e}')
 
@@ -52,29 +53,26 @@ class SendEmail:
         :return: None
         """
         self.iframe_name_io()
-
-        # check if the iframe for single contact is open
-        # when the test continues without closing the web, single contact stays opened which causes test failure
-        # single_contact_iframe = (self.page.frame_locator(f"iframe[name=\"{self._name_io}\"]").locator(".ktSsrf").
-        #                          is_visible())
-        # if single_contact_iframe is False:
-        #     self.page.frame_locator(f"iframe[name=\"{self._name_io}\"]"
-        #                             ).get_by_label(f"Name: {credentials['name_from_contacts']},"
-        #                                            f" Subtext: {credentials['email_address_from_contacts']}").click()
         self.page.frame_locator(f"iframe[name=\"{self._name_io}\"]").get_by_label("Search").click()
-        #self.page.frame_locator(f"iframe[name=\"{self._name_io}\"]").get_by_placeholder("Search...").click()
-
-        self.page.frame_locator(f"iframe[name=\"{self._name_io}\"]").get_by_placeholder("Search...").fill(f"{credentials['name_from_contacts']}")
+        self.page.frame_locator(f"iframe[name=\"{self._name_io}\"]").get_by_placeholder(
+            "Search...").fill(f"{credentials['name_from_contacts']}")
         self.page.frame_locator(f"iframe[name=\"{self._name_io}\"]"
                                         ).get_by_label(f"Name: {credentials['name_from_contacts']},"
-                                                    f" Subtext: {credentials['email_address_from_contacts']}").click()
-        # self.page.frame_locator(f"iframe[name=\"{self._name_io}\"]").get_by_label(f"{credentials['name_from_contacts']}\n").click()
-        #self.page.frame_locator(f"iframe[name=\"{self._name_io}\"]"
-        #                            ).get_by_label(f"{credentials['name_from_contacts']}").click()
-                                                
+                                                    f" Subtext: {credentials['email_address_from_contacts']}").click()                                                
         self.page.frame_locator(f"iframe[name=\"{self._name_io}\"]").get_by_label("Send email").click()
         self.page.get_by_placeholder("Subject").fill("test")
         self.page.get_by_role("textbox", name="Message Body").fill("test\n")
+
+    def prepare_email_for_attachement(self) -> None:
+        """
+        Prepares an email for sending with an attachment.
+        
+        :return: None
+        """
+        self.iframe_name_io()
+        self.page.frame_locator(f"iframe[name=\"{self._name_io}\"]").get_by_label("Send email").click()
+        self.page.get_by_placeholder("Subject").fill("test with attachement")
+        self.page.get_by_role("textbox", name="Message Body").fill("test with funny picture\n")
 
     def add_attachment(self) -> None:
         """
@@ -82,9 +80,6 @@ class SendEmail:
 
         :return: None
         """
-        self.page.frame_locator(f"iframe[name=\"{self._name_io}\"]").get_by_label("Send email").click()
-        self.page.get_by_placeholder("Subject").fill("test")
-        self.page.get_by_role("textbox", name="Message Body").fill("test with picture\n")
         working_directory = os.getcwd()
         path_to_file = os.path.join(working_directory, 'files/attachment/funny_picture.png')
 

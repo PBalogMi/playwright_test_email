@@ -1,3 +1,7 @@
+"""
+This project serves as a case study on how to implement Behavior Driven Development (BDD)
+testing for a Gmail account using Python, Gherkin, pytest_bdd, and Playwright.
+"""
 import json
 import os
 
@@ -6,7 +10,26 @@ from src.json_file.json_reader import JsonReader
 from src.json_file.json_writer import JsonWriter
 
 class JsonFile(FileOperations, JsonReader, JsonWriter):
+    """
+    A class to handle JSON file operations including reading, writing, and updating JSON files.
+
+    This class inherits from FileOperations, JsonReader, and JsonWriter to provide a comprehensive
+    set of file operations for JSON files.
+
+    Attributes:
+        directory (str): The directory where the JSON file is located.
+        file_name (str): The name of the JSON file.
+        json_data (dict): The data to be written to the JSON file.
+        path_to_file (str): The full path to the JSON file.
+    """
     def __init__(self, directory: str, file_name:str, json_data: dict = None):
+        """
+        Initializes the JsonFile object with the provided directory, file name, and optional JSON data.
+
+        :param directory: The directory where the JSON file is located.
+        :param file_name: The name of the JSON file.
+        :param json_data: The data to be written to the JSON file. Defaults to an empty dictionary.
+        """
         super().__init__(directory, file_name)
         self.json_data = json_data if json_data is not None else {}
         self.path_to_file = os.path.join(self.directory, self.file_name)

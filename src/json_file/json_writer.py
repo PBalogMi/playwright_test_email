@@ -1,7 +1,19 @@
+"""
+This project serves as a case study on how to implement Behavior Driven Development (BDD)
+testing for a Gmail account using Python, Gherkin, pytest_bdd, and Playwright.
+"""
 import json
 
-
 class JsonWriter:
+    """
+    A class to handle writing data to JSON files.
+
+    This class provides methods to update existing JSON files with new data and to completely rewrite JSON files.
+
+    Attributes:
+        path_to_file (str): The path to the JSON file.
+    """
+
     def __init__(self, path_to_file: str):
         """
         Initializes the JsonWriter with the path to the JSON file.
@@ -36,4 +48,4 @@ class JsonWriter:
         :return: None
         """
         with open(self.path_to_file, 'w', encoding='utf-8') as json_file:
-            json.dump(data, json_file, ensure_ascii=False, indent=4)        
+            json.dump(data, json_file, ensure_ascii=False, indent=4)

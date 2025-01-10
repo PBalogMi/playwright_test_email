@@ -1,7 +1,19 @@
+"""
+This project serves as a case study on how to implement Behavior Driven Development (BDD)
+testing for a Gmail account using Python, Gherkin, pytest_bdd, and Playwright.
+"""
 import json
 
-
 class JsonReader:
+    """
+    A class to handle reading JSON files.
+
+    This class provides methods to read data from a JSON file and return it as a dictionary.
+
+    Attributes:
+        path_to_file (str): The path to the JSON file.
+    """
+
     def __init__(self, path_to_file: str):
         """
         Initializes the JsonReader with the path to the JSON file.

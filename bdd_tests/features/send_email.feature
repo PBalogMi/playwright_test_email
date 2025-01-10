@@ -10,7 +10,7 @@ Feature: Verify the Gmail account functionality to send email to the address pic
       | Peter Balog        | pbalogmi@gmail.com          |
 
   Scenario: Send an email to the address picked from the contact list with an attachment - level 3
-    When the name and email address from contacts are already given from level 2 - Examples table
-    Then attach file named as funny_picture.png
+    When the email is prepared for attachement
+    Then attach the file named as funny_picture.png
     And send email
     And the user clicks the Google account with the account name from level 1 and then the logout button

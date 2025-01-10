@@ -1,6 +1,6 @@
 *** Settings ***
 Library    Browser
-Library    ../src/get_password_for_robot.py
+Library    ../src/get_password.py
 
 
 *** Variables ***
@@ -32,7 +32,7 @@ the login name is filled out with the email address
     click    id=identifierNext
 
 the password on the second page is populated using the password stored in the "config.env" file
-    ${password}=     robot get password from env
+    ${password}=     Get Password From Env
     type text   xpath=//input[@type='password' and @name='Passwd']      ${password}
 
 execute the login into the email
