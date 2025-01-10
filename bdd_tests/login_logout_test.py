@@ -3,23 +3,20 @@ This project serves as a case study on how to implement Behavior Driven Developm
 using Python, Gherkin, pytest_bdd, and Playwright.
 """
 # pylint: disable=W0621
-import pytest
 from pytest_bdd import scenarios, given, when, then, parsers
 
 from src.login import Login
 from src.logout import Logout
+from src.json_file.json_file import JsonFile
+from src.get_password import get_password_from_env
 
 
 scenarios("features/login_logout.feature")
 
+directory_to_shared_credentials = "resources"
+json_file_name = "shared_credentials.json"
 
-@pytest.fixture(scope="session")
-def credentials() -> dict:
-    """
-    Fixture to provide a dictionary for storing credentials.
-    """
-    return {"email": "", "password": "", "account_name": ""}
-
+credentials_and_password = JsonFile(directory=directory_to_shared_credentials, file_name=json_file_name)
 
 @given('Google\'s \"Sign in\" page is displayed by FireFox web browser')
 def login_page_open() -> None:
@@ -32,39 +29,41 @@ def login_page_open() -> None:
 
 
 @when(parsers.parse('the login name is filled out with the email address "{email}"'))
-def fill_user_name(email: str, credentials: dict) -> dict:
+def fill_user_name(email: str) -> None:
     """
     Step definition for filling out the login name with an email address.
 
     :param shared_credentials: A dictionary which will be used for whole session.
     :param email: The email address to be filled in.
     """
-    credentials["email"] = email
+    credentials_and_password.update_to_json_file(data={"email": email})
 
 
 @when('the password on the second page is populated using the password stored in the \"config.env\" file')
-def fill_password(password: str, credentials: dict) -> None:
+def fill_password() -> None:
     """
     Step definition for filling out the password on the second page from the "config.env" file.
 
     :param shared_credentials: A dictionary dedicated for whole session containing the email address.
     """
-    credentials["password"] = password
+    password = get_password_from_env()
+    credentials_and_password.update_to_json_file(data={"password": password})
 
 
 @then('execute the login into the email')
-def execute_login(login: Login, credentials: dict) -> None:
+def execute_login(login: Login) -> None:
     """
     Step definition for executing the login into the email account.
 
     :param shared_credentials: A dictionary dedicated for whole session containing 'email' and 'password'.
     :param login: The instance of Login to perform login operations.
     """
+    credentials = credentials_and_password.read_json_file()
     login.execute_login(credentials)
 
 
 @when(parsers.parse('the user clicks the Google account with the name "{account_name}"'))
-def google_account(account_name: str, credentials: dict) -> None:
+def google_account(account_name: str) -> None:
     """
     Step definition for clicking on a Google account and then logging out, also update credentials into JSON file for
     the future use.
@@ -72,15 +71,16 @@ def google_account(account_name: str, credentials: dict) -> None:
     :param shared_credentials: A dictionary dedicated for whole session containing 'account_name'.
     :param account_name: The name of the Google account.
     """
-    credentials["account_name"] = account_name
+    credentials_and_password.update_to_json_file(data={"account_name": account_name})
 
 
 @then(parsers.parse('execute logout'))
-def execute_logout(logout: Logout, credentials: dict) -> None:
+def execute_logout(logout: Logout) -> None:
     """
     Step definition for executing the logout process.
 
     :param shared_credentials: A dictionary dedicated for whole session containing 'account_name'.
     :param logout: The instance of Logout to perform logout operations.
     """
+    credentials = credentials_and_password.read_json_file()
     logout.execute_logout(credentials)

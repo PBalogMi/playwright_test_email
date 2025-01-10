@@ -55,12 +55,23 @@ class SendEmail:
 
         # check if the iframe for single contact is open
         # when the test continues without closing the web, single contact stays opened which causes test failure
-        single_contact_iframe = (self.page.frame_locator(f"iframe[name=\"{self._name_io}\"]").locator(".ktSsrf").
-                                 is_visible())
-        if single_contact_iframe is False:
-            self.page.frame_locator(f"iframe[name=\"{self._name_io}\"]"
-                                    ).get_by_label(f"Name: {credentials['name_from_contacts']},"
-                                                   f" Subtext: {credentials['email_address_from_contacts']}").click()
+        # single_contact_iframe = (self.page.frame_locator(f"iframe[name=\"{self._name_io}\"]").locator(".ktSsrf").
+        #                          is_visible())
+        # if single_contact_iframe is False:
+        #     self.page.frame_locator(f"iframe[name=\"{self._name_io}\"]"
+        #                             ).get_by_label(f"Name: {credentials['name_from_contacts']},"
+        #                                            f" Subtext: {credentials['email_address_from_contacts']}").click()
+        self.page.frame_locator(f"iframe[name=\"{self._name_io}\"]").get_by_label("Search").click()
+        #self.page.frame_locator(f"iframe[name=\"{self._name_io}\"]").get_by_placeholder("Search...").click()
+
+        self.page.frame_locator(f"iframe[name=\"{self._name_io}\"]").get_by_placeholder("Search...").fill(f"{credentials['name_from_contacts']}")
+        self.page.frame_locator(f"iframe[name=\"{self._name_io}\"]"
+                                        ).get_by_label(f"Name: {credentials['name_from_contacts']},"
+                                                    f" Subtext: {credentials['email_address_from_contacts']}").click()
+        # self.page.frame_locator(f"iframe[name=\"{self._name_io}\"]").get_by_label(f"{credentials['name_from_contacts']}\n").click()
+        #self.page.frame_locator(f"iframe[name=\"{self._name_io}\"]"
+        #                            ).get_by_label(f"{credentials['name_from_contacts']}").click()
+                                                
         self.page.frame_locator(f"iframe[name=\"{self._name_io}\"]").get_by_label("Send email").click()
         self.page.get_by_placeholder("Subject").fill("test")
         self.page.get_by_role("textbox", name="Message Body").fill("test\n")
@@ -71,6 +82,9 @@ class SendEmail:
 
         :return: None
         """
+        self.page.frame_locator(f"iframe[name=\"{self._name_io}\"]").get_by_label("Send email").click()
+        self.page.get_by_placeholder("Subject").fill("test")
+        self.page.get_by_role("textbox", name="Message Body").fill("test with picture\n")
         working_directory = os.getcwd()
         path_to_file = os.path.join(working_directory, 'files/attachment/funny_picture.png')
 

@@ -7,14 +7,13 @@ from robot.api.deco import keyword
 from dotenv import dotenv_values
 
 @keyword
-def robot_get_password_from_env() -> str:
+def get_password_from_env() -> str:
     """
     Retrieves the 'PASSWORD' environment variable from the 'config.env' file.
 
     :return: The string associated with the 'PASSWORD' key in the environment variables.
     """
     current_directory = os.getcwd()
-    path_to_config = os.path.dirname(current_directory)
-    path_to_file = os.path.join(path_to_config, 'config.env')
+    path_to_file = os.path.join(current_directory, 'config.env')
     env_vars = dotenv_values(path_to_file)
     return env_vars.get('PASSWORD', '')
