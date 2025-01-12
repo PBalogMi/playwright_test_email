@@ -1,6 +1,6 @@
 """
-This project serves as a case study on how to implement Behavior Driven Development (BDD) testing for a Gmail account 
-using Python, Gherkin, pytest_bdd, and Playwright.
+The get_password.py file contains the function get_password_from_env that reads the password from the 
+config.env file and serves also for the Robot framework.
 """
 import os
 from robot.api.deco import keyword

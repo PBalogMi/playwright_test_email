@@ -6,7 +6,7 @@ from pytest_bdd import scenarios, given, when, then, parsers
 
 from src.login import Login
 from src.logout import Logout
-from src.send_email import SendEmail
+from src.send_the_email import SendEmail
 from src.json_file.json_file import JsonFile
 
 

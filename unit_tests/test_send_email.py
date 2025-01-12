@@ -4,7 +4,7 @@ using Python, Gherkin, pytest_bdd, and Playwright.
 """
 import unittest
 from unittest.mock import MagicMock
-from src.send_email import SendEmail
+from src.send_the_email import SendEmail
 
 class TestSendEmail(unittest.TestCase):
     """

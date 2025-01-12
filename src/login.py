@@ -1,6 +1,6 @@
 """
-This project serves as a case study on how to implement Behavior Driven Development (BDD) testing for a Gmail account 
-using Python, Gherkin, pytest_bdd, and Playwright.
+The loginn.py file contains the Login class that is responsible for logging into 
+an email account using provided credentials.
 """
 from playwright.sync_api import Page
 

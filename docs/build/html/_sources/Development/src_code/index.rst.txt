@@ -1,11 +1,33 @@
 SRC - source code
------------------
+=================
 
-The source code is located in the `src` directory.
-This directory contains the main code that powers Playwright and the test cases.
+The source code is located in the **src** directory and is executed by tests using the fixtures **login**, **logout**, and **send_the_email**.
+The code in the **src** directory contains the main logic that powers Playwright and the test cases.
 
-The `get_password.py` file contains the function `get_password_from_env` that reads the password from the `config.env` file and serves also for the Robot framework.
+Get password
+------------
 
 .. automodule:: src.get_password
    :members:
    :exclude-members: __init__
+
+Login
+-----
+
+.. automodule:: src.login
+   :members:
+   :exclude-members: __init__
+
+Logout
+------
+
+.. automodule:: src.logout
+   :members:
+   :exclude-members: __init__
+
+Send the email
+--------------
+
+.. automodule:: src.send_the_email
+   :members:
+   :exclude-members: __init__, __doc__

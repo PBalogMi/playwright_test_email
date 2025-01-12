@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Json file &mdash; Python, Playwright, BDD, Gherkin, Robot framework  documentation</title>
+  <title>JSON file &mdash; Python, Playwright, BDD, Gherkin, Robot framework  documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -59,10 +59,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../pylint/index.html">Pylint - static code analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../unit_tests/index.html">Unit tests - dynamic code analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../src_code/index.html">SRC - source code</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Json file</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#src.json_file.json_file.JsonFile"><code class="docutils literal notranslate"><span class="pre">JsonFile</span></code></a></li>
-</ul>
-</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">JSON file</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../Testing/index.html">BDD TESTS DEVELOPING</a></li>
@@ -88,7 +85,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../index.html">DEVELOPMENT</a></li>
-      <li class="breadcrumb-item active">Json file</li>
+      <li class="breadcrumb-item active">JSON file</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/Development/json_file/index.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -99,25 +96,33 @@
            <div itemprop="articleBody">
              
   <section id="json-file">
-<h1>Json file<a class="headerlink" href="#json-file" title="Link to this heading"></a></h1>
+<h1>JSON file<a class="headerlink" href="#json-file" title="Link to this heading"></a></h1>
 <p>The code serves to create a JSON file and read/write the data to it.</p>
-<p id="module-src.json_file.json_file">This project serves as a case study on how to implement Behavior Driven Development (BDD)
-testing for a Gmail account using Python, Gherkin, pytest_bdd, and Playwright.</p>
-<dl class="py class">
-<dt class="sig sig-object py" id="src.json_file.json_file.JsonFile">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.json_file.json_file.</span></span><span class="sig-name descname"><span class="pre">JsonFile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">json_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.json_file.json_file.JsonFile" title="Link to this definition"></a></dt>
-<dd><p>A class to handle JSON file operations including reading, writing, and updating JSON files.</p>
-<p>This class inherits from FileOperations, JsonReader, and JsonWriter to provide a comprehensive
-set of file operations for JSON files.</p>
-<dl class="simple">
-<dt>Attributes:</dt><dd><p>directory (str): The directory where the JSON file is located.
-file_name (str): The name of the JSON file.
-json_data (dict): The data to be written to the JSON file.
-path_to_file (str): The full path to the JSON file.</p>
-</dd>
-</dl>
-</dd></dl>
+<p><strong>Examples of JSON file usage:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">src.json_file.json_file</span><span class="w"> </span><span class="kn">import</span> <span class="n">JsonFile</span>
 
+<span class="n">DIRECTORY_TO_SHARED_CREDENTIALS</span> <span class="o">=</span> <span class="s2">&quot;resources&quot;</span>
+<span class="n">JSON_FILE_NAME</span> <span class="o">=</span> <span class="s2">&quot;shared_credentials.json&quot;</span>
+
+<span class="c1"># Optional initialization with dictionary to have better overview what kind of keys values are used in tests</span>
+<span class="n">credentials_and_password</span> <span class="o">=</span> <span class="n">JsonFile</span><span class="p">(</span><span class="n">directory</span><span class="o">=</span><span class="n">DIRECTORY_TO_SHARED_CREDENTIALS</span><span class="p">,</span>
+                                     <span class="n">file_name</span><span class="o">=</span><span class="n">JSON_FILE_NAME</span><span class="p">,</span>
+                                     <span class="n">json_data</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+                                                <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+                                                <span class="s2">&quot;account_name&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">})</span>
+
+<span class="c1">#Add or update to JSON file:</span>
+<span class="n">credentials_and_password</span><span class="o">.</span><span class="n">update_to_json_file</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;john_smith@gmail.com&quot;</span><span class="p">})</span>
+
+<span class="c1">#Read from JSON file:</span>
+<span class="n">credentials</span> <span class="o">=</span> <span class="n">credentials_and_password</span><span class="o">.</span><span class="n">read_json_file</span><span class="p">()</span>
+
+<span class="c1">#Rewrite Json file completly with new data:</span>
+<span class="n">credentials_and_password</span><span class="o">.</span><span class="n">rewrite_json_file</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;john_smithed@gmail.com&quot;</span><span class="p">,</span>
+                                                 <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;unknown&quot;</span><span class="p">,</span>
+                                                 <span class="s2">&quot;account_name&quot;</span><span class="p">:</span> <span class="s2">&quot;John Smith&quot;</span><span class="p">})</span>
+</pre></div>
+</div>
 </section>
 
 

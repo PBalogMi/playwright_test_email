@@ -9,9 +9,20 @@ from unittest.mock import patch
 from src.get_password import get_password_from_env
 
 class TestGetPasswordFromEnv(unittest.TestCase):
+    """
+    Unit tests for the get_password_from_env function.
+    """
+
     @patch('src.get_password.dotenv_values')
     @patch('os.getcwd')
     def test_get_password_from_env(self, mock_getcwd, mock_dotenv_values):
+        """
+        Test the get_password_from_env function to ensure it correctly retrieves the password
+        from the config.env file.
+
+        :param mock_getcwd: Mock for os.getcwd function.
+        :param mock_dotenv_values: Mock for dotenv_values function.
+        """        
         # Mock the current working directory
         mock_getcwd.return_value = '/mocked/path'
 

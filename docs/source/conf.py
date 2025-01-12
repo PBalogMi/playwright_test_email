@@ -26,7 +26,9 @@ exclude_patterns = ['_build',
                     ]
 
 autodoc_default_options = {
-    'special-members': '__init__'
+    'members': True,  # Include only members by default
+    'member_order': 'bysource',  # Order members by source code
+    'exclude_members': '__init__',  # Exclude the __init__ method
     }
 
 # -- Options for HTML output -------------------------------------------------
@@ -34,3 +36,5 @@ autodoc_default_options = {
 
 html_theme = 'sphinx_rtd_theme'
 html_static_path = ['_static']
+
+autodoc_docstring_signature = True

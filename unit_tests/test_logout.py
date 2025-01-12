@@ -9,12 +9,23 @@ from src.logout import Logout
 
 
 class TestLogout(unittest.TestCase):
+    """
+    Unit tests for the Logout class.
+    """
 
     def setUp(self):
+        """
+        Set up the test case with a mock Page object and an instance of Logout.
+        """
         self.mocked_page = Mock(spec=Page)
         self.logout = Logout(self.mocked_page)
 
     def test_execute_logout(self):
+        """
+        Test the execute_logout method to ensure it correctly logs out the user.
+
+        :param credentials: A dictionary containing 'account_name' and 'email'.
+        """
         credentials = {"account_name": "Test User", "email": "test@example.com"}
 
         with patch.object(self.mocked_page, "get_by_label") as mock_get_by_label, \

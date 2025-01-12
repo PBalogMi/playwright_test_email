@@ -24,7 +24,7 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Json file" href="../json_file/index.html" />
+    <link rel="next" title="JSON file" href="../json_file/index.html" />
     <link rel="prev" title="Unit tests - dynamic code analysis" href="../unit_tests/index.html" /> 
 </head>
 
@@ -59,10 +59,25 @@
 <li class="toctree-l2"><a class="reference internal" href="../pylint/index.html">Pylint - static code analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../unit_tests/index.html">Unit tests - dynamic code analysis</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">SRC - source code</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#src.get_password.get_password_from_env"><code class="docutils literal notranslate"><span class="pre">get_password_from_env()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-src.get_password">Get password</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#src.get_password.get_password_from_env"><code class="docutils literal notranslate"><span class="pre">get_password_from_env()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../json_file/index.html">Json file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-src.login">Login</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#src.login.Login"><code class="docutils literal notranslate"><span class="pre">Login</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-src.logout">Logout</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#src.logout.Logout"><code class="docutils literal notranslate"><span class="pre">Logout</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-src.send_the_email">Send the email</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#src.send_the_email.SendTheEmail"><code class="docutils literal notranslate"><span class="pre">SendTheEmail</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../json_file/index.html">JSON file</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../Testing/index.html">BDD TESTS DEVELOPING</a></li>
@@ -100,11 +115,12 @@
              
   <section id="src-source-code">
 <h1>SRC - source code<a class="headerlink" href="#src-source-code" title="Link to this heading"></a></h1>
-<p>The source code is located in the <cite>src</cite> directory.
-This directory contains the main code that powers Playwright and the test cases.</p>
-<p>The <cite>get_password.py</cite> file contains the function <cite>get_password_from_env</cite> that reads the password from the <cite>config.env</cite> file and serves also for the Robot framework.</p>
-<p id="module-src.get_password">This project serves as a case study on how to implement Behavior Driven Development (BDD) testing for a Gmail account 
-using Python, Gherkin, pytest_bdd, and Playwright.</p>
+<p>The source code is located in the <strong>src</strong> directory and is executed by tests using the fixtures <strong>login</strong>, <strong>logout</strong>, and <strong>send_the_email</strong>.
+The code in the <strong>src</strong> directory contains the main logic that powers Playwright and the test cases.</p>
+<section id="module-src.get_password">
+<span id="get-password"></span><h2>Get password<a class="headerlink" href="#module-src.get_password" title="Link to this heading"></a></h2>
+<p>The get_password.py file contains the function get_password_from_env that reads the password from the 
+config.env file and serves also for the Robot framework.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="src.get_password.get_password_from_env">
 <span class="sig-prename descclassname"><span class="pre">src.get_password.</span></span><span class="sig-name descname"><span class="pre">get_password_from_env</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#src.get_password.get_password_from_env" title="Link to this definition"></a></dt>
@@ -117,13 +133,134 @@ using Python, Gherkin, pytest_bdd, and Playwright.</p>
 </dd></dl>
 
 </section>
+<section id="module-src.login">
+<span id="login"></span><h2>Login<a class="headerlink" href="#module-src.login" title="Link to this heading"></a></h2>
+<p>The loginn.py file contains the Login class that is responsible for logging into 
+an email account using provided credentials.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="src.login.Login">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.login.</span></span><span class="sig-name descname"><span class="pre">Login</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">page</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Page</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.login.Login" title="Link to this definition"></a></dt>
+<dd><p>Class for logging into an email account using provided credentials.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="src.login.Login.execute_login">
+<span class="sig-name descname"><span class="pre">execute_login</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">credentials</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#src.login.Login.execute_login" title="Link to this definition"></a></dt>
+<dd><p>Log into the email account using provided credentials.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>credentials</strong> – A dictionary containing ‘email’ and ‘password’.
+‘email’: The email address to log in.
+‘password’: The password for the email account.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-src.logout">
+<span id="logout"></span><h2>Logout<a class="headerlink" href="#module-src.logout" title="Link to this heading"></a></h2>
+<p>The logout.py file contains the Logout class that is responsible for logging out of a Google account.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="src.logout.Logout">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.logout.</span></span><span class="sig-name descname"><span class="pre">Logout</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">page</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Page</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.logout.Logout" title="Link to this definition"></a></dt>
+<dd><p>Class for logging out of a Google account.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="src.logout.Logout.execute_logout">
+<span class="sig-name descname"><span class="pre">execute_logout</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">credentials</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#src.logout.Logout.execute_logout" title="Link to this definition"></a></dt>
+<dd><p>Execute the logout process for the provided Google account.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>credentials</strong> – A dictionary containing ‘account_name’ and ‘email’.
+‘account_name’: The name associated with the Google account.
+‘email’: The email address of the Google account.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-src.send_the_email">
+<span id="send-the-email"></span><h2>Send the email<a class="headerlink" href="#module-src.send_the_email" title="Link to this heading"></a></h2>
+<p>SendTheEmail class for sending an email.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="src.send_the_email.SendTheEmail">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.send_the_email.</span></span><span class="sig-name descname"><span class="pre">SendTheEmail</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">page</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Page</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.send_the_email.SendTheEmail" title="Link to this definition"></a></dt>
+<dd><p>Class for sending an email using provided credentials.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="src.send_the_email.SendTheEmail.add_attachment">
+<span class="sig-name descname"><span class="pre">add_attachment</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#src.send_the_email.SendTheEmail.add_attachment" title="Link to this definition"></a></dt>
+<dd><p>Adds an attachment to the email.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.send_the_email.SendTheEmail.iframe_name_io">
+<span class="sig-name descname"><span class="pre">iframe_name_io</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#src.send_the_email.SendTheEmail.iframe_name_io" title="Link to this definition"></a></dt>
+<dd><p>Extracts the id and the ‘name’ attribute of the open iframe with the expected state ‘Contacts’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.send_the_email.SendTheEmail.prepare_email">
+<span class="sig-name descname"><span class="pre">prepare_email</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">credentials</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#src.send_the_email.SendTheEmail.prepare_email" title="Link to this definition"></a></dt>
+<dd><p>Prepares an email by navigating through the iframe and filling out the email details.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>credentials</strong> – A dictionary containing ‘name_from_contacts’ and ‘email_address_from_contacts’.
+‘name_from_contacts’: The name associated with the contact.
+‘email_address_from_contacts’: The email address associated with the contact.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.send_the_email.SendTheEmail.prepare_email_for_attachement">
+<span class="sig-name descname"><span class="pre">prepare_email_for_attachement</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#src.send_the_email.SendTheEmail.prepare_email_for_attachement" title="Link to this definition"></a></dt>
+<dd><p>Prepares an email for sending with an attachment.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.send_the_email.SendTheEmail.send_email">
+<span class="sig-name descname"><span class="pre">send_email</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#src.send_the_email.SendTheEmail.send_email" title="Link to this definition"></a></dt>
+<dd><p>Sends the email.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="../unit_tests/index.html" class="btn btn-neutral float-left" title="Unit tests - dynamic code analysis" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../json_file/index.html" class="btn btn-neutral float-right" title="Json file" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../json_file/index.html" class="btn btn-neutral float-right" title="JSON file" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

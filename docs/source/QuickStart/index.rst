@@ -43,13 +43,13 @@ Getting Started
 
         pip install -r requirements.txt
 
-6. Download the necessary browser binaries (Chromium, Firefox, and WebKit) required by Playwright by following command:
+6. Download the necessary browser binaries (Chromium, Firefox, and WebKit) required by Playwright by following command.
 
     .. code:: text
 
         playwright install        
 
-7. Into a **config.env** file in the root directory add the password instead of **** for the email account.
+7. Into a **config.env** file in the root directory add the password instead of `****` for the email account.
 
     .. code:: text
 

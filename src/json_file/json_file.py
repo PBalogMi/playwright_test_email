@@ -28,7 +28,7 @@ class JsonFile(FileOperations, JsonReader, JsonWriter):
 
         :param directory: The directory where the JSON file is located.
         :param file_name: The name of the JSON file.
-        :param json_data: The data to be written to the JSON file. Defaults to an empty dictionary.
+        :param json_data: The data to be written to the JSON file. Defaults is an empty dictionary.
         """
         super().__init__(directory, file_name)
         self.json_data = json_data if json_data is not None else {}

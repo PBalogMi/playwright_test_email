@@ -1,13 +1,12 @@
 """
-This project serves as a case study on how to implement Behavior Driven Development (BDD)
-testing for a Gmail account using Python, Gherkin, pytest_bdd, and Playwright.
+SendTheEmail class for sending an email.
 """
 # pylint: disable=E2502
 import os
 from playwright.sync_api import Page, Error
 
 
-class SendEmail:
+class SendTheEmail:
     """
     Class for sending an email using provided credentials.
     """
