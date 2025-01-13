@@ -3,6 +3,7 @@
 /robot_framework/playwright-log.txt
 /robot_framework/report.html
 config.env
+reports
 /.idea/.gitignore
 /.idea/misc.xml
 /.idea/modules.xml
