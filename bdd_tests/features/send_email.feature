@@ -13,4 +13,4 @@ Feature: Verify the Gmail account functionality to send email to the address pic
     When the email is prepared for attachement
     Then attach the file named as funny_picture.png
     And send email
-    And the user clicks the Google account with the account name from level 1 and then the logout button
+    And the user clicks the Google account with the account name from level 1 and the logout button

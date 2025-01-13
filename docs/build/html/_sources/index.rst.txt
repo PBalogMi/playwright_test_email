@@ -15,6 +15,7 @@ testing for a Gmail account using Python, Gherkin, pytest_bdd, and Playwright.
    :caption: CONTENTS:
 
    Development/index.rst
+   BDDTestsDevelopment/index.rst
    Testing/index.rst   
    RobotFramework/index.rst
 

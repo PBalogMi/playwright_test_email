@@ -33,8 +33,10 @@ Steps: Individual actions or assertions within a scenario.
                 When I enter invalid credentials
                 Then I should see an error message
 
-Pytest-bdd: Bridging Gherkin and Python
+pytest-bdd: Bridging Gherkin and Python
 ---------------------------------------
+
+How it Works:
 
 Parsing: pytest-bdd parses the Gherkin feature files, extracting the scenarios and individual steps.
 Mapping: It maps each Gherkin step to a corresponding Python function (step definition).
@@ -68,7 +70,7 @@ Example:
     def test_successful_login(): 
         pass
 
-Benefits of Pytest-bdd
+Benefits of pytest-bdd
 ----------------------
 
 Improved Readability: Gherkin provides a clear and concise way to describe test scenarios, making them easier to understand for both technical and non-technical stakeholders.
@@ -78,3 +80,16 @@ Collaboration: Fosters better collaboration between developers, testers, and bus
 Maintainability: Tests become more maintainable as changes in requirements can be easily reflected in the Gherkin scenarios.
 
 Reusability: Step definitions can be reused across multiple scenarios, reducing code duplication.
+
+Key Considerations
+------------------
+
+Feature File Structure: Organize feature files into a clear and maintainable structure within your project.
+
+Step Definition Naming: Use clear and descriptive names for your step definition functions.
+
+Data-Driven Testing: Use data tables within Gherkin scenarios to test different sets of input data.
+
+Regular Maintenance: Keep your feature files and step definitions up-to-date as your application evolves.
+
+By effectively utilizing pytest-bdd and Gherkin, you can enhance the quality and maintainability of your tests while improving communication and collaboration within your development team.

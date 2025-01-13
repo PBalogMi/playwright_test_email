@@ -32,7 +32,6 @@ def fill_user_name(email: str) -> None:
     """
     Step definition for filling out the login name with an email address.
 
-    :param shared_credentials: A dictionary which will be used for whole session.
     :param email: The email address to be filled in.
     """
     credentials_and_password.update_to_json_file(data={"email": email})
@@ -42,19 +41,16 @@ def fill_user_name(email: str) -> None:
 def fill_password() -> None:
     """
     Step definition for filling out the password on the second page from the "config.env" file.
-
-    :param shared_credentials: A dictionary dedicated for whole session containing the email address.
     """
     password = get_password_from_env()
     credentials_and_password.update_to_json_file(data={"password": password})
 
 
 @then('execute the login into the email')
-def execute_login(login: Login) -> None:
+def execute_login_test(login: Login) -> None:
     """
     Step definition for executing the login into the email account.
 
-    :param shared_credentials: A dictionary dedicated for whole session containing 'email' and 'password'.
     :param login: The instance of Login to perform login operations.
     """
     credentials = credentials_and_password.read_json_file()
@@ -67,18 +63,16 @@ def google_account(account_name: str) -> None:
     Step definition for clicking on a Google account and then logging out, also update credentials into JSON file for
     the future use.
 
-    :param shared_credentials: A dictionary dedicated for whole session containing 'account_name'.
     :param account_name: The name of the Google account.
     """
     credentials_and_password.update_to_json_file(data={"account_name": account_name})
 
 
-@then(parsers.parse('execute logout'))
+@then('execute logout')
 def execute_logout(logout: Logout) -> None:
     """
     Step definition for executing the logout process.
 
-    :param shared_credentials: A dictionary dedicated for whole session containing 'account_name'.
     :param logout: The instance of Logout to perform logout operations.
     """
     credentials = credentials_and_password.read_json_file()
