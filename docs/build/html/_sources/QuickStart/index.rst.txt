@@ -73,8 +73,6 @@ Getting Started
     The optimal choice is to include your personal email account in the contacts and enter it into the 'Examples:' 
     tables to avoid sending unsolicited emails to someone else's account.**
 
-9. Execute the test cases by command below.
+9. To execute test cases follow the link below.
 
-    .. code:: text
-
-        pytest bdd_tests/login_logout.py && pytest bdd_tests/send_email.py
+    `Link to run test cases <../Testing/index.html#how_to_run_tests>`_

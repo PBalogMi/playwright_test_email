@@ -75,4 +75,4 @@ Getting Started
 
 9. To execute test cases follow the link below.
 
-    `link to run testcases <../../Testing/index.html#how_to_run_tests>`_
+    `Link to run test cases <../Testing/index.html#how_to_run_tests>`_

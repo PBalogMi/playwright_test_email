@@ -57,17 +57,17 @@
 <li class="toctree-l1"><a class="reference internal" href="../Development/index.html">DEVELOPMENT</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">BDD tests development</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#gherkin-the-language-of-behavior">Gherkin: The Language of Behavior</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#pytest-bdd-bridging-gherkin-and-python">pytest-bdd: Bridging Gherkin and Python</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#benefits-of-pytest-bdd">Benefits of pytest-bdd</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#key-considerations">Key Considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pytest-bdd-bridging-gherkin-and-python">Pytest-bdd: Bridging Gherkin and Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#benefits-of-pytest-bdd">Benefits of Pytest-bdd</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../Testing/index.html">TESTING</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../RobotFramework/index.html">Robot framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../RobotFramework/index.html">ROBOT FRAMEWORK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Documentation/index.html">DOCUMENTATION</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">What's next?:</span></p>
+<p class="caption" role="heading"><span class="caption-text">What's next ?:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../Conclusion/index.html">Conclusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Conclusion/index.html">CONCLUSION</a></li>
 </ul>
 
         </div>
@@ -144,8 +144,7 @@
 </dl>
 </section>
 <section id="pytest-bdd-bridging-gherkin-and-python">
-<h2>pytest-bdd: Bridging Gherkin and Python<a class="headerlink" href="#pytest-bdd-bridging-gherkin-and-python" title="Link to this heading"></a></h2>
-<p>How it Works:</p>
+<h2>Pytest-bdd: Bridging Gherkin and Python<a class="headerlink" href="#pytest-bdd-bridging-gherkin-and-python" title="Link to this heading"></a></h2>
 <p>Parsing: pytest-bdd parses the Gherkin feature files, extracting the scenarios and individual steps.
 Mapping: It maps each Gherkin step to a corresponding Python function (step definition).
 Execution: During test execution, pytest-bdd executes the Python functions associated with each step in the defined order.
@@ -176,19 +175,11 @@ Key Components:</p>
 </div>
 </section>
 <section id="benefits-of-pytest-bdd">
-<h2>Benefits of pytest-bdd<a class="headerlink" href="#benefits-of-pytest-bdd" title="Link to this heading"></a></h2>
+<h2>Benefits of Pytest-bdd<a class="headerlink" href="#benefits-of-pytest-bdd" title="Link to this heading"></a></h2>
 <p>Improved Readability: Gherkin provides a clear and concise way to describe test scenarios, making them easier to understand for both technical and non-technical stakeholders.</p>
 <p>Collaboration: Fosters better collaboration between developers, testers, and business analysts by using a shared language.</p>
 <p>Maintainability: Tests become more maintainable as changes in requirements can be easily reflected in the Gherkin scenarios.</p>
 <p>Reusability: Step definitions can be reused across multiple scenarios, reducing code duplication.</p>
-</section>
-<section id="key-considerations">
-<h2>Key Considerations<a class="headerlink" href="#key-considerations" title="Link to this heading"></a></h2>
-<p>Feature File Structure: Organize feature files into a clear and maintainable structure within your project.</p>
-<p>Step Definition Naming: Use clear and descriptive names for your step definition functions.</p>
-<p>Data-Driven Testing: Use data tables within Gherkin scenarios to test different sets of input data.</p>
-<p>Regular Maintenance: Keep your feature files and step definitions up-to-date as your application evolves.</p>
-<p>By effectively utilizing pytest-bdd and Gherkin, you can enhance the quality and maintainability of your tests while improving communication and collaboration within your development team.</p>
 </section>
 </section>
 

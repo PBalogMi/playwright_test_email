@@ -16,8 +16,6 @@ To execute BDD tests, run the following command:
 
     pytest bdd_tests/login_logout_test.py
 
-..code:: text
-
     pytest bdd_tests/send_email_test.py  
 
 To execute BDD tests and generate an HTML report stored in a specific folder, run the following command:
@@ -29,6 +27,8 @@ To execute BDD tests and generate an HTML report stored in a specific folder, ru
 .. hint::
 
     Test reports are stored in the ``reports/bdd_reports`` folder and can be checked by your favorit browser by opening the ``report.html`` file.
+
+.. _how_to_run_robot:
 
 Robot Framework
 ---------------

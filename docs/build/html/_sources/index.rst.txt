@@ -18,9 +18,10 @@ testing for a Gmail account using Python, Gherkin, pytest_bdd, and Playwright.
    BDDTestsDevelopment/index.rst
    Testing/index.rst   
    RobotFramework/index.rst
+   Documentation/index.rst
 
 .. toctree::
    :maxdepth: 1
-   :caption: What's next?:
+   :caption: What's next ?:
 
    Conclusion/index.rst
