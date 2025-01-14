@@ -8,7 +8,10 @@
 
 ```bash
 python -m venv venv
-python source .venv/Scripts/activate 
+```
+
+```bash
+python source .venv/Scripts/activate
 ```
 
 3. Install dependencies.
