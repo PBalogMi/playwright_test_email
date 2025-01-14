@@ -4,34 +4,30 @@
 
 1. Clone repository to your local machine.
 
-2. Create a virtual environment
+2. Create a virtual environment and activate it.
 
 ```bash
-python -m venv venv 
+python -m venv venv
+python source .venv/Scripts/activate 
 ```
 
+3. Install dependencies.
 
+```bash
+pip install -r requirements.txt
+```
 
+4. Make documentation.
 
+```bash
+make docs
+```
 
+5. Check documentation for more details.
 
-
-
-# Please for quick start and for more information follow up the link below.
-
-   [##From Python to Pytest BDD thanks to Playwright and Gherkin](https://pbalogmi.github.io/playwright_test_email/docs/index.html)
-
-
-   ⚠️ **Warning: Protect Your Credentials**
-
-   **Do not share credentials through any repository. Always ensure that before sharing your code or committing changes, 
-   all credentials are removed from 'Examples:' tables within feature files and also from [config.env](/config.env) file.
-   Protect your sensitive information and avoid sharing it inadvertently.**
- 
-   **Note: The optimal choice is to include your personal email account in the contacts and enter it into the 'Examples:' 
-   tables to avoid sending unsolicited emails to someone else's account.**
-
-
+```
+make doc
+```
 
 ## Contributing
 If you'd like to contribute to this project, feel free to open an issue or submit a pull request. 

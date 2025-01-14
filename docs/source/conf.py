@@ -38,3 +38,5 @@ html_theme = 'sphinx_rtd_theme'
 html_static_path = ['_static']
 
 autodoc_docstring_signature = True
+
+# [##From Python to Pytest BDD thanks to Playwright and Gherkin](https://pbalogmi.github.io/playwright_test_email/docs/index.html)
