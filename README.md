@@ -1,6 +1,6 @@
-## From Python to Pytest BDD thanks to Playwright and Gherkin
+# From Python to Pytest BDD thanks to Playwright and Gherkin
 
-# Quick start
+## Quick start
 
 1. Clone repository to your local machine.
 
@@ -32,9 +32,9 @@ make docs
 make doc
 ```
 
-# Contributing
+## Contributing
 If you'd like to contribute to this project, feel free to open an issue or submit a pull request. 
 All contributions are welcome!
 
-# License
+## License
 This project is licensed under the MIT License.
