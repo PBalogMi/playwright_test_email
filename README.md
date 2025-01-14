@@ -26,7 +26,7 @@ pip install -r requirements.txt
 make docs
 ```
 
-5. Check the documentation for more details (it will open automatically in your favorite browser).
+5. Check the documentation for more details (it will open automatically in Google's Chrome browser).
 
 ```bash
 make doc
