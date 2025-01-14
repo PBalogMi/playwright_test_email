@@ -1,3 +1,21 @@
+## From Python to Pytest BDD thanks to Playwright and Gherkin
+
+# Quick start
+
+1. Clone repository to your local machine.
+
+2. Create a virtual environment
+
+```bash
+python -m venv venv 
+```
+
+
+
+
+
+
+
 
 # Please for quick start and for more information follow up the link below.
 
