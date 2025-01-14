@@ -4,6 +4,7 @@
 /robot_framework/report.html
 config.env
 reports
+docs/build
 /.idea/.gitignore
 /.idea/misc.xml
 /.idea/modules.xml
