@@ -1,7 +1,7 @@
 
 # Please for quick start and for more information follow up the link below.
 
-   [##From Python to Pytest BDD thanks to Playwright and Gherkin](https://PBalogMi.github.io/playwright_test_email/index.html)
+   [##From Python to Pytest BDD thanks to Playwright and Gherkin](https://PBalogMi.github.io/playwright_test_email/master/docs/build/html/index.html)
 
 
    ⚠️ **Warning: Protect Your Credentials**
