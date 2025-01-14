@@ -20,13 +20,13 @@ python source .venv/Scripts/activate
 pip install -r requirements.txt
 ```
 
-4. Make documentation.
+4. Make a documentation.
 
 ```bash
 make docs
 ```
 
-5. Check documentation for more details (it will open in your favorite browser).
+5. Check the documentation for more details (it will open automatically in your favorite browser).
 
 ```bash
 make doc
