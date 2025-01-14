@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BDD tests development &mdash; Python, Playwright, BDD, Gherkin, Robot framework  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="TESTING" href="../Testing/index.html" />
+    <link rel="prev" title="JSON file" href="../Development/json_file/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Python, Playwright, BDD, Gherkin, Robot framework
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">QUICK START:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../QuickStart/index.html">Prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../QuickStart/index.html#getting-started">Getting Started</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CONTENTS:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Development/index.html">DEVELOPMENT</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">BDD tests development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#gherkin-the-language-of-behavior">Gherkin: The Language of Behavior</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pytest-bdd-bridging-gherkin-and-python">Pytest-bdd: Bridging Gherkin and Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#benefits-of-pytest-bdd">Benefits of Pytest-bdd</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Testing/index.html">TESTING</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../RobotFramework/index.html">ROBOT FRAMEWORK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Documentation/index.html">DOCUMENTATION</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">What's next ?:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Conclusion/index.html">CONCLUSION</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Python, Playwright, BDD, Gherkin, Robot framework</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">BDD tests development</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/BDDTestsDevelopment/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="bdd-tests-development">
+<h1>BDD tests development<a class="headerlink" href="#bdd-tests-development" title="Link to this heading"></a></h1>
+<section id="gherkin-the-language-of-behavior">
+<h2>Gherkin: The Language of Behavior<a class="headerlink" href="#gherkin-the-language-of-behavior" title="Link to this heading"></a></h2>
+<dl>
+<dt>Feature: Represents a high-level user story or requirement.</dt><dd><ul class="simple">
+<li><p>Example: Feature: Login Functionality</p></li>
+</ul>
+</dd>
+<dt>Scenario: A specific example or use case within a feature.</dt><dd><ul class="simple">
+<li><p>Example: Scenario: Successful Login</p></li>
+</ul>
+</dd>
+<dt>Steps: Individual actions or assertions within a scenario.</dt><dd><blockquote>
+<div><ul class="simple">
+<li><dl class="simple">
+<dt>Uses keywords like:</dt><dd><ul>
+<li><p>Given: Establishes the initial context or preconditions.</p></li>
+<li><p>When: Describes the action or event that triggers a change in the system.</p></li>
+<li><p>Then: Specifies the expected outcome or result.</p></li>
+<li><p>And/But: Used to continue a step within the same Given, When, or Then block.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+<ul>
+<li><p>Example:</p>
+<blockquote>
+<div><div class="highlight-gherkin notranslate"><div class="highlight"><pre><span></span><span class="k">Feature:</span><span class="nf"> Login Functionality</span>
+
+<span class="k">Scenario:</span><span class="nf"> Successful Login</span>
+<span class="k">    Given </span><span class="nf">I am on the login page</span>
+<span class="nf">    </span><span class="k">When </span><span class="nf">I enter valid username and password</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">I should be logged in successfully</span>
+
+<span class="k">Scenario:</span><span class="nf"> Unsuccessful Login</span>
+<span class="k">    Given </span><span class="nf">I am on the login page</span>
+<span class="nf">    </span><span class="k">When </span><span class="nf">I enter invalid credentials</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">I should see an error message</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ul>
+</dd>
+</dl>
+</section>
+<section id="pytest-bdd-bridging-gherkin-and-python">
+<h2>Pytest-bdd: Bridging Gherkin and Python<a class="headerlink" href="#pytest-bdd-bridging-gherkin-and-python" title="Link to this heading"></a></h2>
+<p>Parsing: pytest-bdd parses the Gherkin feature files, extracting the scenarios and individual steps.
+Mapping: It maps each Gherkin step to a corresponding Python function (step definition).
+Execution: During test execution, pytest-bdd executes the Python functions associated with each step in the defined order.
+Key Components:</p>
+<p>&#64;given, &#64;when, &#64;then: These decorators in Python are used to define step definitions. They correspond to the respective Gherkin keywords.
+&#64;scenario: This decorator links a Python test function to a specific scenario in a feature file.</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pytest_bdd</span><span class="w"> </span><span class="kn">import</span> <span class="n">given</span><span class="p">,</span> <span class="n">when</span><span class="p">,</span> <span class="n">then</span><span class="p">,</span> <span class="n">scenario</span>
+
+<span class="nd">@given</span><span class="p">(</span><span class="s1">&#39;I am on the login page&#39;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">on_login_page</span><span class="p">(</span><span class="n">browser</span><span class="p">):</span>
+    <span class="n">browser</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://example.com/login&quot;</span><span class="p">)</span>
+
+<span class="nd">@when</span><span class="p">(</span><span class="s1">&#39;I enter valid username and password&#39;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">enter_credentials</span><span class="p">(</span><span class="n">browser</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">):</span>
+    <span class="n">browser</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="s1">&#39;input[name=&quot;username&quot;]&#39;</span><span class="p">,</span> <span class="n">username</span><span class="p">)</span>
+    <span class="n">browser</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="s1">&#39;input[name=&quot;password&quot;]&#39;</span><span class="p">,</span> <span class="n">password</span><span class="p">)</span>
+    <span class="n">browser</span><span class="o">.</span><span class="n">find_element_by_css_selector</span><span class="p">(</span><span class="s1">&#39;button[type=&quot;submit&quot;]&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+
+<span class="nd">@then</span><span class="p">(</span><span class="s1">&#39;I should be logged in successfully&#39;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">verify_login_success</span><span class="p">(</span><span class="n">browser</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="s2">&quot;Welcome&quot;</span> <span class="ow">in</span> <span class="n">browser</span><span class="o">.</span><span class="n">page_source</span>
+
+<span class="nd">@scenario</span><span class="p">(</span><span class="s1">&#39;login.feature&#39;</span><span class="p">,</span> <span class="s1">&#39;Successful Login&#39;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_successful_login</span><span class="p">():</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+</section>
+<section id="benefits-of-pytest-bdd">
+<h2>Benefits of Pytest-bdd<a class="headerlink" href="#benefits-of-pytest-bdd" title="Link to this heading"></a></h2>
+<p>Improved Readability: Gherkin provides a clear and concise way to describe test scenarios, making them easier to understand for both technical and non-technical stakeholders.</p>
+<p>Collaboration: Fosters better collaboration between developers, testers, and business analysts by using a shared language.</p>
+<p>Maintainability: Tests become more maintainable as changes in requirements can be easily reflected in the Gherkin scenarios.</p>
+<p>Reusability: Step definitions can be reused across multiple scenarios, reducing code duplication.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../Development/json_file/index.html" class="btn btn-neutral float-left" title="JSON file" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../Testing/index.html" class="btn btn-neutral float-right" title="TESTING" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Peter.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

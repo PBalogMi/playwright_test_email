@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TESTING &mdash; Python, Playwright, BDD, Gherkin, Robot framework  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="ROBOT FRAMEWORK" href="../RobotFramework/index.html" />
+    <link rel="prev" title="BDD tests development" href="../BDDTestsDevelopment/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Python, Playwright, BDD, Gherkin, Robot framework
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">QUICK START:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../QuickStart/index.html">Prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../QuickStart/index.html#getting-started">Getting Started</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CONTENTS:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Development/index.html">DEVELOPMENT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BDDTestsDevelopment/index.html">BDD tests development</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">TESTING</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#pytest-bdd">Pytest BDD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#robot-framework">Robot Framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bdd-coverage-test">BDD Coverage test</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../RobotFramework/index.html">ROBOT FRAMEWORK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Documentation/index.html">DOCUMENTATION</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">What's next ?:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Conclusion/index.html">CONCLUSION</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Python, Playwright, BDD, Gherkin, Robot framework</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">TESTING</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/Testing/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="testing">
+<span id="how-to-run-tests"></span><h1>TESTING<a class="headerlink" href="#testing" title="Link to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All commands are executed from the root directory of the project.</p>
+</div>
+<section id="pytest-bdd">
+<h2>Pytest BDD<a class="headerlink" href="#pytest-bdd" title="Link to this heading"></a></h2>
+<p>To execute BDD tests, run the following command:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>pytest bdd_tests/login_logout_test.py
+
+pytest bdd_tests/send_email_test.py
+</pre></div>
+</div>
+<p>To execute BDD tests and generate an HTML report stored in a specific folder, run the following command:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>pytest bdd_tests/login_logout_test.py --html=reports/bdd_reports/report.html
+</pre></div>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Test reports are stored in the <code class="docutils literal notranslate"><span class="pre">reports/bdd_reports</span></code> folder and can be checked by your favorit browser by opening the <code class="docutils literal notranslate"><span class="pre">report.html</span></code> file.</p>
+</div>
+</section>
+<section id="robot-framework">
+<span id="how-to-run-robot"></span><h2>Robot Framework<a class="headerlink" href="#robot-framework" title="Link to this heading"></a></h2>
+<p>To execute Robot Framework tests, run the following command:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>robot robot_framework/login_logout.robot
+</pre></div>
+</div>
+<p>To execute Robot Framework tests and generate an HTML report stored in a specific folder, run the following command:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>robot --outputdir reports/robot_framework robot_framework/login_logout.robot
+</pre></div>
+</div>
+</section>
+<section id="bdd-coverage-test">
+<h2>BDD Coverage test<a class="headerlink" href="#bdd-coverage-test" title="Link to this heading"></a></h2>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>pytest --cov=src --cov-report=html:reports/coverage bdd_tests/login_logout_test.py bdd_tests/send_email_test.py
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../BDDTestsDevelopment/index.html" class="btn btn-neutral float-left" title="BDD tests development" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../RobotFramework/index.html" class="btn btn-neutral float-right" title="ROBOT FRAMEWORK" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Peter.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
