@@ -47,7 +47,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           # Upload the built documentation from the _build/html directory
-          path: 'docs/_build' # Change this to 'docs/_build'
+          path: 'doc/_build' # Change this to 'docs/_build'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
