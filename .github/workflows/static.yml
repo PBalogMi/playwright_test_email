@@ -25,40 +25,47 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # Single deploy job since we're just deploying
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r docs/requirements.txt
+          pip install sphinx sphinx_rtd_theme sphinx_copybutton
+      
+      - name: Build Sphinx docs
+        run: |
+          cd docs
+          make html
+          # Debug output
+          ls -la _build/html/
+          # Add .nojekyll file to tell GitHub not to use Jekyll
+          touch _build/html/.nojekyll
+      
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+      
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: 'docs/_build/html'
+  
   deploy:
+    needs: build
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Disable Jekyll
-        run: |
-          touch docs/.nojekyll
-      - name: Set up Python 3.x
-        uses: actions/setup-python@v5  # Use the latest version of setup-python
-        with:
-          python-version: "3.x"
-      - name: Install dependencies
-        run: |
-          pip install -r docs/requirements.txt  # Install Sphinx and any extensions
-          pip install sphinx sphinx_rtd_theme
-      - name: Build Sphinx documentation
-        run: |
-          cd docs
-          make html
-          # Debug information
-          ls -la _build/html/
-          test -f _build/html/index.html || { echo "Build failed - index.html not found"; exit 1; }
-          # Copy .nojekyll to the build directory to ensure GitHub Pages doesn't process with Jekyll
-          cp .nojekyll _build/html/
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          # Upload the built documentation from the _build/html directory
-          path: 'docs/_build/html'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
