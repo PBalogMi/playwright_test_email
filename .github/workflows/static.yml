@@ -46,6 +46,7 @@ jobs:
         run: |
           cd docs
           make html
+          test -f _build/html/index.html || { echo "Build failed - index.html not found"; exit 1; }
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
