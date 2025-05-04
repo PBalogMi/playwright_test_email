@@ -3,7 +3,7 @@ name: Deploy Sphinx Docs to Pages
 on:
   # Runs on pushes targeting the main branch
   push:
-    branches: ["main"]  # Change this to "main" or your default branch
+    branches: ["main", "master"]  # Change this to "main" or your default branch
 
   pull_request:
     branches: [ "main" ]  # Runs on pull requests targeting the main branch
@@ -30,6 +30,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      # Create .nojekyll file before anything else to disable Jekyll
+      - name: Disable Jekyll
+        run: touch .nojekyll
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -41,17 +45,28 @@ jobs:
           pip install -r docs/requirements.txt
           pip install sphinx sphinx_rtd_theme sphinx_copybutton
 
-      - name: Build Sphinx docs
+      # - name: Build Sphinx docs
+      #   run: |
+      #     cd docs
+      #     make html
+      #     # Debug output
+      #     ls -la _build/html/
+      #     # Add .nojekyll file to tell GitHub not to use Jekyll
+      #     touch _build/html/.nojekyll
+
+      - name: Build Sphinx documentation manually
         run: |
           cd docs
-          make html
+          sphinx-build -b html . _build/html
           # Debug output
           ls -la _build/html/
-          # Add .nojekyll file to tell GitHub not to use Jekyll
-          touch _build/html/.nojekyll
+          # Verify index.html exists
+          test -f _build/html/index.html || { echo "ERROR: index.html not found!"; exit 1; }
+          # Add .nojekyll file to build output
+          cp ../.nojekyll _build/html/
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
+      # - name: Setup Pages
+      #   uses: actions/configure-pages@v4
       
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
@@ -60,10 +75,10 @@ jobs:
   
   deploy:
     needs: build
+    runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
     steps:
       - name: Deploy to GitHub Pages
         id: deployment

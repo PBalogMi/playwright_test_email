@@ -39,3 +39,5 @@ extensions = [
     'sphinx.ext.viewcode',  # Optional: adds links to source code
     # ...any other extensions you may have...
 ]
+
+html_baseurl = 'https://pbalogmi.github.io/playwright_test_email/'
