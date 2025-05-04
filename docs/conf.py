@@ -31,11 +31,6 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
 html_theme = 'nature'
 #html_theme = 'sphinx_rtd_theme'
-
-html_theme_options = {
-    
-    'document_name': '',    # Try setting the document name to empty
-}
     
 html_static_path = ['_build/html/_static']
 # Add sphinx_rtd_theme to extensions
