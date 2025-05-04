@@ -11,9 +11,9 @@ sys.path.insert(0, os.path.abspath('../'))  # Adjust the path to the root of you
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'Playwright Test Project'
+project = 'playwright_test_email'
 copyright = '2025, Peter Balog'
-author = 'Peter Balog'
+author = 'PBalogMi'
 release = '1.0'
 
 # -- General configuration ---------------------------------------------------
