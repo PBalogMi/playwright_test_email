@@ -31,7 +31,7 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
 #html_theme = 'classic'
 html_theme = 'sphinx_rtd_theme'
-#html_static_path = ['_static']
+html_static_path = ['_build/html/_static']
 # Add sphinx_rtd_theme to extensions
 extensions = [
     'sphinx_rtd_theme',
